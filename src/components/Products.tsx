@@ -23,7 +23,7 @@ export default function Products() {
       "item": {
         "@type": "Product",
         "name": product.name,
-        "image": `${domain}${product.image}`, // FIXED: Full URL
+        "image": product.image.startsWith('http') ? product.image : `${domain}${product.image}`, 
         "description": product.description,
         "sku": `BOX-${product.id}`, 
         "brand": {
@@ -37,13 +37,13 @@ export default function Products() {
         },
         "offers": {
           "@type": "Offer",
-          "url": typeof window !== 'undefined' ? window.location.href : domain,
+          "url": domain,
           "priceCurrency": "INR",
-          "price": "0", // FIXED: Numeric string required
+          "price": "0", 
           "priceValidUntil": "2026-12-31",
           "availability": "https://schema.org/InStock",
           "itemCondition": "https://schema.org/NewCondition",
-          "hasMerchantReturnPolicy": { // FIXED: Required field
+          "hasMerchantReturnPolicy": { 
             "@type": "MerchantReturnPolicy",
             "applicableCountry": "IN",
             "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
@@ -56,7 +56,7 @@ export default function Products() {
                 "value": "0",
                 "currency": "INR"
              },
-             "shippingDestination": { // FIXED: Required field
+             "shippingDestination": { 
                 "@type": "DefinedRegion",
                 "addressCountry": "IN"
              },
@@ -110,8 +110,9 @@ export default function Products() {
                   itemType="https://schema.org/Product"
                 >
                   <div className="relative pt-[80%] bg-gray-200">
+                    {/* FIXED: itemProp="image" needs the absolute URL in the content attribute */}
+                    <link itemProp="image" href={`${domain}${product.image}`} />
                     <img 
-                      itemProp="image"
                       src={product.image}
                       alt={product.name}
                       className="absolute inset-0 w-full h-full object-cover"
@@ -146,8 +147,16 @@ export default function Products() {
                     >
                       <meta itemProp="priceCurrency" content="INR" />
                       <meta itemProp="availability" content="https://schema.org/InStock" />
-                      <meta itemProp="url" content={typeof window !== 'undefined' ? window.location.href : domain} />
+                      <meta itemProp="url" content={domain} />
                       
+                      {/* FIXED: Adding required Merchant details to Microdata */}
+                      <div itemProp="shippingDetails" itemScope itemType="https://schema.org/OfferShippingDetails">
+                        <div itemProp="shippingRate" itemScope itemType="https://schema.org/MonetaryAmount">
+                          <meta itemProp="value" content="0" />
+                          <meta itemProp="currency" content="INR" />
+                        </div>
+                      </div>
+
                       <span className="text-gray-400 font-medium text-sm">
                         Product Solution
                       </span>
