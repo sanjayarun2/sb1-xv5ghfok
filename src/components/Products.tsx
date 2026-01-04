@@ -47,7 +47,9 @@ export default function Products() {
             "@type": "MerchantReturnPolicy",
             "applicableCountry": "IN",
             "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-            "merchantReturnDays": 7
+            "merchantReturnDays": 7,
+            "returnFees": "https://schema.org/FreeReturn",
+            "returnMethod": "https://schema.org/ReturnByMail"
           },
           "shippingDetails": {
              "@type": "OfferShippingDetails",
