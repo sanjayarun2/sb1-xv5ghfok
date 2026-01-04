@@ -6,8 +6,41 @@ export default function Breadcrumbs() {
   const location = useLocation();
   const pathnames = location.pathname.split('/').filter((x) => x);
 
+  // Generate Breadcrumb Schema
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://premiumbox.com" // Update with your actual domain
+      },
+      ...pathnames.map((name, index) => {
+        const routeTo = `/${pathnames.slice(0, index + 1).join('/')}`;
+        const displayName = name.split('-').map(word => 
+          word.charAt(0).toUpperCase() + word.slice(1)
+        ).join(' ');
+        
+        return {
+          "@type": "ListItem",
+          "position": index + 2,
+          "name": displayName,
+          "item": `https://premiumbox.com${routeTo}` // Update with your actual domain
+        };
+      })
+    ]
+  };
+
   return (
     <div className="bg-gray-50 border-b border-gray-200">
+      {/* Breadcrumb Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
         <ol className="flex items-center space-x-2 text-sm">
           <li>

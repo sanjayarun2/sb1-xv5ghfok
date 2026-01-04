@@ -15,13 +15,13 @@ const addresses = [
     title: "Main Branch",
     address: "183 Edanganasalai, Murugan Nagar - 2nd street, Elampillai - 637502",
     phone: "+91 8904752338",
-    email: "branch@premiumbox.com"
+    email: "branch@premiumpacking.in"
   },
   {
     title: "Production Plant",
     address: "158 Tamil Nagar, Sivakasi - 626123",
     phone: "+91 8526939639",
-    email: "Factory@premiumbox.com"
+    email: "Factory@premiumpacking.in"
   }
 ];
 
@@ -43,8 +43,58 @@ const deliveryPartners = [
 ];
 
 export default function Footer() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://premiumpacking.in/#organization",
+        "name": "Premium Box Manufacturing",
+        "url": "https://premiumpackin.in",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://premiumpacking.in/logo.png",
+          "contentUrl": "https://premiumpacking.in/logo.png",
+          "width": "512",
+          "height": "512",
+          "caption": "Premium Box Manufacturing"
+        },
+        "sameAs": socialLinks.map(link => link.url)
+      },
+      {
+        "@type": "LocalBusiness",
+        "@id": "https://premiumpacking.in/#localbusiness",
+        "name": "Premium Box Manufacturing",
+        "image": "https://premiumpacking.in/logo.png",
+        "telephone": "+91 8904752338",
+        "url": "https://premiumpacking.in",
+        "address": [
+          {
+            "@type": "PostalAddress",
+            "streetAddress": "183 Edanganasalai, Murugan Nagar - 2nd street",
+            "addressLocality": "Elampillai",
+            "postalCode": "637502",
+            "addressCountry": "IN"
+          },
+          {
+            "@type": "PostalAddress",
+            "streetAddress": "158 Tamil Nagar",
+            "addressLocality": "Sivakasi",
+            "postalCode": "626123",
+            "addressCountry": "IN"
+          }
+        ]
+      }
+    ]
+  };
+
   return (
     <footer className="bg-white border-t border-gray-200">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         
         {/* Company Info */}
@@ -90,7 +140,6 @@ export default function Footer() {
 
           <div>
             <h4 className="text-sm font-semibold text-gray-900 mb-6 uppercase tracking-wider">We deliver with:</h4>
-            {/* FIXED: Using a grid forces identical size and zoom level for all icons */}
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
               {deliveryPartners.map((partner) => (
                 <div 

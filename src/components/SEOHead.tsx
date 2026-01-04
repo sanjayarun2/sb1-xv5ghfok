@@ -16,13 +16,12 @@ export default function SEOHead({
   const siteName = 'Premium Box Manufacturing';
   const fullTitle = `${title} | ${siteName}`;
 
-  // Use a standard JavaScript object and stringify it for the script tag
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": siteName,
     "description": description,
-    "url": canonicalUrl || "https://yourwebsite.com",
+    "url": canonicalUrl || "https://yourwebsite.com", // Ensure this is your real domain
     "telephone": "+91 8904752338",
     "address": [
       {
@@ -66,7 +65,6 @@ export default function SEOHead({
       <link rel="manifest" href="/site.webmanifest" />
       <meta name="theme-color" content="#ffffff" />
 
-      {/* FIXED: Using JSON.stringify avoids the "Missing '}' or object member name" error */}
       <script type="application/ld+json">
         {JSON.stringify(organizationSchema)}
       </script>
