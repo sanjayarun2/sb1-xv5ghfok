@@ -1,65 +1,66 @@
-import React, { useState, useEffect } from 'react';
-import { supabase } from '../lib/supabase';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
-import { Link } from 'react-router-dom';
+import { categoryProducts } from '../data/products';
+
+// Swiper Styles
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 export default function Products() {
-  const [products, setProducts] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
+  // 1. Flatten products from all categories into one array for the Schema
+  const allProducts = Object.values(categoryProducts).flat();
 
-  useEffect(() => {
-    const fetchProducts = async () => {
-      setLoading(true);
-      try {
-        const { data, error } = await supabase
-          .from('products')
-          .select('*')
-          .order('created_at', { ascending: true });
-        if (!error && data) setProducts(data);
-      } catch (error) {
-        console.error('Error fetching products:', error);
-      } finally {
-        setLoading(false);
+  // 2. Generate the JSON-LD ItemList Schema
+  // This tells Google: "Here is a list of specific products available on this page"
+  const schemaData = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Our Box Solutions Catalog",
+    "numberOfItems": allProducts.length,
+    "itemListElement": allProducts.map((product, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "item": {
+        "@type": "Product",
+        "name": product.name,
+        "image": product.image,
+        "description": product.description,
+        "brand": {
+          "@type": "Brand",
+          "name": "Our Box Solution"
+        },
+        "offers": {
+          "@type": "Offer",
+          "url": typeof window !== 'undefined' ? window.location.href : '',
+          "priceCurrency": "INR", // Change to your local currency code
+          // Cleans price: converts "₹1,200" to "1200"
+          "price": product.price ? product.price.replace(/[^0-9.]/g, '') : "0",
+          "availability": "https://schema.org/InStock"
+        }
       }
-    };
-    fetchProducts();
-  }, []);
-
-  if (loading) {
-    return (
-      <section className="bg-gray-50 py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[1, 2, 3].map((n) => (
-              <div key={n} className="animate-pulse">
-                <div className="bg-gray-200 rounded-lg aspect-[4/3]"></div>
-                <div className="mt-4 space-y-2">
-                  <div className="h-4 bg-gray-200 rounded w-3/4"></div>
-                  <div className="h-4 bg-gray-200 rounded w-1/2"></div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-    );
-  }
+    }))
+  };
 
   return (
-    <section id="products" className="bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="text-center">
-          <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl lg:text-5xl">
+    <section id="products" className="bg-gray-50 py-20">
+      {/* SEO: Inject the structured data script */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
+      />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-extrabold text-gray-900 tracking-tight sm:text-5xl">
             Our Box Solutions
           </h2>
-          <p className="mt-4 text-xl text-gray-500 max-w-2xl mx-auto">
-            Discover our range of premium box manufacturing services
+          <div className="mt-4 h-1.5 w-32 bg-blue-600 mx-auto rounded-full"></div>
+          <p className="mt-6 text-xl text-gray-500 max-w-2xl mx-auto">
+            Specialized packaging for sarees, textiles, and industrial shipping.
           </p>
         </div>
+
         <div className="mt-12">
           <Swiper
             modules={[Navigation, Pagination]}
@@ -68,34 +69,73 @@ export default function Products() {
             navigation
             pagination={{ clickable: true }}
             breakpoints={{
-              640: {
-                slidesPerView: 2,
-              },
-              1024: {
-                slidesPerView: 3,
-              },
+              640: { slidesPerView: 2 },
+              1024: { slidesPerView: 3 },
             }}
-            className="pb-12"
+            className="pb-14"
           >
-            {products.map((product, index) => (
+            {allProducts.map((product) => (
               <SwiperSlide key={product.id}>
-                <Link 
-                  to={`/product/${product.id}`}
-                  className="block bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 h-full"
+                {/* Microdata: itemScope and itemType help search engines link visual elements to data */}
+                <div 
+                  className="group block bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden h-full"
+                  itemScope 
+                  itemType="https://schema.org/Product"
                 >
-                  <div className="relative pt-[75%]">
+                  {/* Product Image */}
+                  <div className="relative pt-[80%] bg-gray-200">
                     <img 
-                      src={product.image_url}
+                      itemProp="image"
+                      src={product.image}
                       alt={product.name}
                       className="absolute inset-0 w-full h-full object-cover"
-                      loading={index < 3 ? "eager" : "lazy"}
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.src = 'https://via.placeholder.com/800x600?text=Packaging+Solution';
+                      }}
                     />
                   </div>
-                  <div className="p-6">
-                    <h3 className="text-lg font-semibold text-gray-900">{product.name}</h3>
-                    <p className="mt-2 text-sm text-gray-500 line-clamp-2">{product.description}</p>
+
+                  {/* Product Details */}
+                  <div className="p-8">
+                    <div className="flex justify-between items-start mb-2">
+                      <h3 className="text-xl font-bold text-gray-900" itemProp="name">
+                        {product.name}
+                      </h3>
+                    </div>
+                    <p 
+                      className="text-gray-600 text-sm line-clamp-2 leading-relaxed" 
+                      itemProp="description"
+                    >
+                      {product.description}
+                    </p>
+                    
+                    {/* Offer/Pricing Section */}
+                    <div 
+                      className="mt-6 pt-6 border-t border-gray-50 flex items-center justify-between"
+                      itemProp="offers" 
+                      itemScope 
+                      itemType="https://schema.org/Offer"
+                    >
+                      {/* Hidden meta for bots */}
+                      <meta itemProp="priceCurrency" content="INR" />
+                      <meta itemProp="availability" content="https://schema.org/InStock" />
+                      
+                      <span className="text-gray-400 font-medium text-sm">
+                        Product Solution
+                      </span>
+                      
+                      {/* Visible Price */}
+                      <span 
+                        className="px-3 py-1 bg-gray-100 text-gray-600 text-xs font-bold rounded-full uppercase tracking-widest"
+                        itemProp="price"
+                        content={product.price ? product.price.replace(/[^0-9.]/g, '') : "0"}
+                      >
+                        {product.price}
+                      </span>
+                    </div>
                   </div>
-                </Link>
+                </div>
               </SwiperSlide>
             ))}
           </Swiper>

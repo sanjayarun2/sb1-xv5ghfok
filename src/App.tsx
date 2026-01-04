@@ -1,4 +1,3 @@
-import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { AuthProvider } from './contexts/AuthContext';
@@ -47,21 +46,27 @@ export default function App() {
                 <Route path="brands" element={<BrandsAdmin />} />
                 <Route path="stats" element={<StatsAdmin />} />
               </Route>
+              
+              {/* --- HOME ROUTE UPDATED --- */}
               <Route path="/" element={
                 <>
                   <Navbar />
                   <div className="space-y-8">
-                    <Hero />
+                    <Hero /> {/* First Topic */}
+                    
+                    <Products /> {/* "Our Box Solutions" moved here */}
+                    
                     <Features />
                     <ManufacturingProcess />
                     <ProjectStats />
-                    <Products />
                     <TrustedBrands />
                     <Testimonials />
                   </div>
                   <Footer />
                 </>
               } />
+              {/* -------------------------- */}
+
               <Route path="/about" element={
                 <>
                   <Navbar />
