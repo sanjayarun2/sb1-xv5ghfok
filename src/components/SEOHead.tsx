@@ -21,7 +21,7 @@ export default function SEOHead({
     "@type": "LocalBusiness",
     "name": siteName,
     "description": description,
-    "url": canonicalUrl || "https://yourwebsite.com", // Ensure this is your real domain
+    "url": canonicalUrl || "https://premiumpacking.in", // Ensure this is your real domain
     "telephone": "+91 8904752338",
     "address": [
       {

@@ -30,10 +30,10 @@ export default function App() {
         <Router>
           <div className="min-h-screen bg-white">
             <SEOHead 
-              title="Premium Box Manufacturing"
-              description="Leading manufacturer of premium Saree boxes, printing boxes, and carton boxes. Custom designs with superior quality for your packaging needs."
-              keywords="saree box manufacturer, printing boxes, carton boxes, packaging solutions, custom boxes"
-              canonicalUrl="https://yourwebsite.com"
+              title="Saree Box Manufacturer | Premium Saree Packaging Boxes Wholesale"
+              description="Leading saree box manufacturer offering custom saree packing boxes, wedding saree boxes, and silk saree packaging at wholesale prices. Pan-India delivery."
+              keywords="saree box manufacturer, saree packaging box, saree boxes wholesale, saree box price, wedding saree packing box, silk saree box, saree gift box"
+              canonicalUrl="https://premiumpacking.in"
             />
             <Routes>
               <Route path="/admin" element={<AdminLogin />} />
