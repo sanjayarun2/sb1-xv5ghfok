@@ -5,6 +5,9 @@ import { ChevronRight, Home } from 'lucide-react';
 export default function Breadcrumbs() {
   const location = useLocation();
   const pathnames = location.pathname.split('/').filter((x) => x);
+  
+  // FIX: Use your actual domain
+  const domain = "https://premiumpacking.in";
 
   // Generate Breadcrumb Schema
   const breadcrumbSchema = {
@@ -15,7 +18,7 @@ export default function Breadcrumbs() {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://premiumbox.com" // Update with your actual domain
+        "item": domain 
       },
       ...pathnames.map((name, index) => {
         const routeTo = `/${pathnames.slice(0, index + 1).join('/')}`;
@@ -27,15 +30,17 @@ export default function Breadcrumbs() {
           "@type": "ListItem",
           "position": index + 2,
           "name": displayName,
-          "item": `https://premiumbox.com${routeTo}` // Update with your actual domain
+          "item": `${domain}${routeTo}` 
         };
       })
     ]
   };
 
+  // If we are on the homepage (no pathnames), we usually don't show breadcrumbs
+  if (pathnames.length === 0) return null;
+
   return (
     <div className="bg-gray-50 border-b border-gray-200">
-      {/* Breadcrumb Schema */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
