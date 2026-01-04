@@ -11,11 +11,10 @@ import 'swiper/css/pagination';
 
 export default function Testimonials() {
   
-  // --- DYNAMIC SCHEMA INJECTION ---
+  // --- DYNAMIC SCHEMA INJECTION (The only SEO you need) ---
   useEffect(() => {
     if (!testimonials || testimonials.length === 0) return;
 
-    // We calculate the average based on the testimonials you manually added
     const totalRating = testimonials.reduce((acc, curr) => acc + (curr.rating || 5), 0);
     const averageRating = (totalRating / testimonials.length).toFixed(1);
 
@@ -23,7 +22,7 @@ export default function Testimonials() {
       "@context": "https://schema.org/",
       "@type": "Product", 
       "name": "Our Box Solution Packaging Services",
-      "image": "https://yourwebsite.com/logo.png", // Replace with your logo/store image
+      "image": "https://yourwebsite.com/logo.png", 
       "description": "Custom box packaging solutions for textiles and industrial use.",
       "brand": {
         "@type": "Brand",
@@ -104,24 +103,21 @@ export default function Testimonials() {
             >
               {testimonials.map((testimonial) => (
                 <SwiperSlide key={testimonial.id}>
-                  {/* Visual Card with Microdata fallback */}
-                  <div 
-                    className="h-full bg-white rounded-2xl shadow-lg p-8 border border-gray-100 flex flex-col"
-                    itemScope itemType="https://schema.org/Review"
-                  >
+                  {/* Visual Card - Cleaned of all itemProps/itemScopes */}
+                  <div className="h-full bg-white rounded-2xl shadow-lg p-8 border border-gray-100 flex flex-col">
                     <div className="flex items-center mb-6">
                       <div className="h-14 w-14 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold text-xl">
                         {testimonial.name.charAt(0)}
                       </div>
                       <div className="ml-4">
-                        <h4 className="text-lg font-bold text-gray-900" itemProp="author">{testimonial.name}</h4>
+                        <h4 className="text-lg font-bold text-gray-900">{testimonial.name}</h4>
                         <p className="text-sm text-blue-600 font-medium">{testimonial.role}</p>
                       </div>
                     </div>
                     <div className="flex mb-4">
                       {renderStars(testimonial.rating)}
                     </div>
-                    <p className="text-gray-600 italic leading-relaxed flex-grow" itemProp="reviewBody">
+                    <p className="text-gray-600 italic leading-relaxed flex-grow">
                       “{testimonial.content}”
                     </p>
                   </div>
