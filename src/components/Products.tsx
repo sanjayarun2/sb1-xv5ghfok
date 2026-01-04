@@ -11,7 +11,7 @@ export default function Products() {
   const allProducts = Object.values(categoryProducts).flat();
   const domain = "https://premiumpacking.in";
 
-  // 2. Optimized JSON-LD for Rich Results
+  // Optimized JSON-LD for Rich Results
   const schemaData = {
     "@context": "https://schema.org",
     "@type": "ItemList",
@@ -104,14 +104,9 @@ export default function Products() {
           >
             {allProducts.map((product) => (
               <SwiperSlide key={product.id}>
-                <div 
-                  className="group block bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden h-full"
-                  itemScope 
-                  itemType="https://schema.org/Product"
-                >
+                {/* Visual Card - Cleaned of all Microdata attributes */}
+                <div className="group block bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden h-full">
                   <div className="relative pt-[80%] bg-gray-200">
-                    {/* FIXED: itemProp="image" needs the absolute URL in the content attribute */}
-                    <link itemProp="image" href={`${domain}${product.image}`} />
                     <img 
                       src={product.image}
                       alt={product.name}
@@ -125,47 +120,21 @@ export default function Products() {
 
                   <div className="p-8">
                     <div className="flex justify-between items-start mb-2">
-                      <h3 className="text-xl font-bold text-gray-900" itemProp="name">
+                      <h3 className="text-xl font-bold text-gray-900">
                         {product.name}
                       </h3>
                     </div>
-                    <meta itemProp="brand" content="Our Box Solution" />
-                    <meta itemProp="sku" content={`BOX-${product.id}`} />
                     
-                    <p 
-                      className="text-gray-600 text-sm line-clamp-2 leading-relaxed" 
-                      itemProp="description"
-                    >
+                    <p className="text-gray-600 text-sm line-clamp-2 leading-relaxed">
                       {product.description}
                     </p>
                     
-                    <div 
-                      className="mt-6 pt-6 border-t border-gray-50 flex items-center justify-between"
-                      itemProp="offers" 
-                      itemScope 
-                      itemType="https://schema.org/Offer"
-                    >
-                      <meta itemProp="priceCurrency" content="INR" />
-                      <meta itemProp="availability" content="https://schema.org/InStock" />
-                      <meta itemProp="url" content={domain} />
-                      
-                      {/* FIXED: Adding required Merchant details to Microdata */}
-                      <div itemProp="shippingDetails" itemScope itemType="https://schema.org/OfferShippingDetails">
-                        <div itemProp="shippingRate" itemScope itemType="https://schema.org/MonetaryAmount">
-                          <meta itemProp="value" content="0" />
-                          <meta itemProp="currency" content="INR" />
-                        </div>
-                      </div>
-
+                    <div className="mt-6 pt-6 border-t border-gray-50 flex items-center justify-between">
                       <span className="text-gray-400 font-medium text-sm">
                         Product Solution
                       </span>
                       
-                      <span 
-                        className="px-3 py-1 bg-gray-100 text-gray-600 text-xs font-bold rounded-full uppercase tracking-widest"
-                        itemProp="price"
-                        content="0"
-                      >
+                      <span className="px-3 py-1 bg-gray-100 text-gray-600 text-xs font-bold rounded-full uppercase tracking-widest">
                         {product.price}
                       </span>
                     </div>
