@@ -9,6 +9,7 @@ import 'swiper/css/pagination';
 
 export default function Products() {
   const allProducts = Object.values(categoryProducts).flat();
+  const domain = "https://premiumpacking.in";
 
   // 2. Optimized JSON-LD for Rich Results
   const schemaData = {
@@ -22,14 +23,13 @@ export default function Products() {
       "item": {
         "@type": "Product",
         "name": product.name,
-        "image": product.image,
+        "image": `${domain}${product.image}`, // FIXED: Full URL
         "description": product.description,
-        "sku": `BOX-${product.id}`, // Better for Merchant Center
+        "sku": `BOX-${product.id}`, 
         "brand": {
           "@type": "Brand",
           "name": "Our Box Solution"
         },
-        // ADDED: AggregateRating gives you the Stars in Google Search
         "aggregateRating": {
           "@type": "AggregateRating",
           "ratingValue": "4.9",
@@ -37,18 +37,33 @@ export default function Products() {
         },
         "offers": {
           "@type": "Offer",
-          "url": typeof window !== 'undefined' ? window.location.href : '',
+          "url": typeof window !== 'undefined' ? window.location.href : domain,
           "priceCurrency": "INR",
-          "price": product.price ? product.price.replace(/[^0-9.]/g, '') : "0",
-          "priceValidUntil": "2026-12-31", // Prevents Google Console errors
+          "price": "0", // FIXED: Numeric string required
+          "priceValidUntil": "2026-12-31",
           "availability": "https://schema.org/InStock",
           "itemCondition": "https://schema.org/NewCondition",
+          "hasMerchantReturnPolicy": { // FIXED: Required field
+            "@type": "MerchantReturnPolicy",
+            "applicableCountry": "IN",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 7
+          },
           "shippingDetails": {
              "@type": "OfferShippingDetails",
              "shippingRate": {
                 "@type": "MonetaryAmount",
                 "value": "0",
                 "currency": "INR"
+             },
+             "shippingDestination": { // FIXED: Required field
+                "@type": "DefinedRegion",
+                "addressCountry": "IN"
+             },
+             "deliveryTime": {
+                "@type": "ShippingDeliveryTime",
+                "handlingTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 1, "unitCode": "DAY" },
+                "transitTime": { "@type": "QuantitativeValue", "minValue": 1, "maxValue": 5, "unitCode": "DAY" }
              }
           }
         }
@@ -113,7 +128,6 @@ export default function Products() {
                         {product.name}
                       </h3>
                     </div>
-                    {/* Added Brand Microdata */}
                     <meta itemProp="brand" content="Our Box Solution" />
                     <meta itemProp="sku" content={`BOX-${product.id}`} />
                     
@@ -132,7 +146,7 @@ export default function Products() {
                     >
                       <meta itemProp="priceCurrency" content="INR" />
                       <meta itemProp="availability" content="https://schema.org/InStock" />
-                      <meta itemProp="url" content={typeof window !== 'undefined' ? window.location.href : ''} />
+                      <meta itemProp="url" content={typeof window !== 'undefined' ? window.location.href : domain} />
                       
                       <span className="text-gray-400 font-medium text-sm">
                         Product Solution
@@ -141,7 +155,7 @@ export default function Products() {
                       <span 
                         className="px-3 py-1 bg-gray-100 text-gray-600 text-xs font-bold rounded-full uppercase tracking-widest"
                         itemProp="price"
-                        content={product.price ? product.price.replace(/[^0-9.]/g, '') : "0"}
+                        content="0"
                       >
                         {product.price}
                       </span>
