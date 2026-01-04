@@ -6,6 +6,7 @@ import Hero from './components/Hero';
 import Features from './components/Features';
 import ManufacturingProcess from './components/ManufacturingProcess';
 import Products from './components/Products';
+import PillarSection from './components/PillarSection'; // Added this import
 import Testimonials from './components/Testimonials';
 import TrustedBrands from './components/TrustedBrands';
 import ProjectStats from './components/ProjectStats';
@@ -54,7 +55,9 @@ export default function App() {
                   <div className="space-y-8">
                     <Hero /> {/* First Topic */}
                     
-                    <Products /> {/* "Our Box Solutions" moved here */}
+                    <Products /> {/* "Our Box Solutions" */}
+                    
+                    <PillarSection /> {/* Added this section here */}
                     
                     <Features />
                     <ManufacturingProcess />
