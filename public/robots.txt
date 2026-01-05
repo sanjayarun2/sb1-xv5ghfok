@@ -1,5 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /admin/
+Disallow: /cgi-bin/
 
-# Sitemaps
+# Sitemap Link
 Sitemap: https://premiumpacking.in/sitemap.xml
