@@ -15,7 +15,9 @@ export default function Products() {
   const schemaData = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    "name": "Our Box Solutions Catalog",
+    // UPDATE: Matches your new H2 for consistency
+    "name": "Saree Box Packaging Solutions Catalog", 
+    "description": "Premium saree box packaging and customised solutions for luxury retail, textiles, and global industrial shipping.",
     "numberOfItems": allProducts.length,
     "itemListElement": allProducts.map((product, index) => ({
       "@type": "ListItem",
@@ -28,7 +30,8 @@ export default function Products() {
         "sku": `BOX-${product.id}`, 
         "brand": {
           "@type": "Brand",
-          "name": "Our Box Solution"
+          // UPDATE: Replaced "Our Box Solution" with High-Impact Keyword
+          "name": "Saree Box Packaging Solutions" 
         },
         "aggregateRating": {
           "@type": "AggregateRating",
@@ -82,15 +85,18 @@ export default function Products() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
+          {/* H2 Updated with Keyword */}
           <h2 className="text-4xl font-extrabold text-gray-900 tracking-tight sm:text-5xl">
-            Our Box Solutions
+            Saree Box Packaging Solutions
           </h2>
           <div className="mt-4 h-1.5 w-32 bg-blue-600 mx-auto rounded-full"></div>
+          {/* Description Updated with Keyword */}
           <p className="mt-6 text-xl text-gray-500 max-w-2xl mx-auto">
-            Specialized packaging for sarees, textiles, and industrial shipping.
+            Premium saree box packaging and customised solutions for luxury retail, textiles, and global industrial shipping.
           </p>
         </div>
 
+        {/* ... Rest of your Swiper code ... */}
         <div className="mt-12">
           <Swiper
             modules={[Navigation, Pagination]}
@@ -106,7 +112,6 @@ export default function Products() {
           >
             {allProducts.map((product) => (
               <SwiperSlide key={product.id}>
-                {/* Visual Card - Cleaned of all Microdata attributes */}
                 <div className="group block bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden h-full">
                   <div className="relative pt-[80%] bg-gray-200">
                     <img 

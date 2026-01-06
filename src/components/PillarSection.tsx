@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 
 const content = {
-  title: "Complete Packaging Solutions",
+  title: "Premium Saree Boxes Online",
   subtitle: "From Concept to Creation",
   description: "We provide end-to-end manufacturing for premium saree boxes and industrial packaging. Our process combines traditional craftsmanship with modern automation to deliver excellence.",
   fullContent: [

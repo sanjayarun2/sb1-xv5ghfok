@@ -1,6 +1,4 @@
 import React from 'react';
-import { useQuery } from '@supabase/supabase-js';
-import { supabase } from '../lib/supabase';
 import { Clock, Target, Package, Users } from 'lucide-react';
 
 export default function ProjectStats() {
@@ -22,10 +20,10 @@ export default function ProjectStats() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-gray-900">
-            Our <span className="text-blue-600">Impact</span> in Numbers
+            Global Saree <span className="text-blue-600">Box</span> Impact in Numbers
           </h2>
           <p className="mt-4 text-xl text-gray-600">
-            Delivering excellence through years of experience and dedication
+          Delivering excellence at a competitive saree boxes wholesale price to clients worldwide
           </p>
         </div>
 
