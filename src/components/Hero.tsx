@@ -8,10 +8,9 @@ export default function Hero() {
           
           <main className="flex flex-col lg:grid lg:grid-cols-2 lg:gap-12 items-center">
             
-            {/* LEFT SIDE: CONTENT - Fixed Mobile Symmetry */}
+            {/* LEFT SIDE: CONTENT */}
             <div className="text-center lg:text-left pt-6 lg:pt-0 w-full">
               <h1 className="tracking-tight font-extrabold text-gray-900 leading-tight">
-                {/* Adjusted mobile size for better line balancing */}
                 <div className="text-[1.75rem] leading-8 sm:text-5xl md:text-6xl mb-2 px-2 lg:px-0">
                   Saree Box Manufacturer
                 </div>
@@ -20,8 +19,8 @@ export default function Hero() {
                 </div>
               </h1>
 
-              {/* Symmetric padding for description on mobile */}
-              <div className="mt-8 text-gray-600 text-base md:text-lg leading-relaxed max-w-2xl mx-auto lg:mx-0 px-4 sm:px-0">
+              {/* FIXED DESCRIPTION: Applied text-justify to remove the zigzag effect */}
+              <div className="mt-8 text-gray-600 text-base md:text-lg leading-relaxed max-w-2xl mx-auto lg:mx-0 px-6 sm:px-0 text-justify md:text-left lg:text-left [hyphens:auto]">
                 <p>
                   Specializing in premium saree box manufacturing, we provide a diverse range 
                   of saree packing tray and saree packing box solutions designed for high-volume 
@@ -35,7 +34,6 @@ export default function Hero() {
                 </p>
               </div>
 
-              {/* Action Button - Balanced on Mobile */}
               <div className="mt-10 flex justify-center lg:justify-start px-6 sm:px-0">
                 <div className="rounded-md shadow w-full sm:w-auto">
                   <a href="#products" className="group w-full flex items-center justify-center px-8 py-4 border border-transparent text-base font-bold rounded-md text-white bg-blue-600 hover:bg-blue-700 md:text-lg transition-all">
@@ -46,11 +44,10 @@ export default function Hero() {
               </div>
             </div>
 
-            {/* RIGHT SIDE: THE HOOK CARD - Professional Layout */}
+            {/* RIGHT SIDE: THE HOOK CARD */}
             <div className="mt-14 lg:mt-0 w-full flex justify-center lg:justify-end px-4 sm:px-0">
               <div className="bg-gradient-to-br from-blue-50 to-white p-6 sm:p-8 rounded-3xl border-2 border-blue-100 shadow-xl w-full max-w-md transform transition hover:scale-[101%]">
                 
-                {/* Header: Centered on mobile for aesthetics */}
                 <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 mb-8 text-center sm:text-left">
                   <div className="bg-yellow-400 p-2.5 rounded-full shadow-sm shrink-0">
                     <Zap className="text-blue-900 h-6 w-6 fill-current" />
@@ -64,7 +61,6 @@ export default function Hero() {
                 </div>
 
                 <div className="space-y-6">
-                  {/* Step 1 */}
                   <div className="flex items-start gap-4 text-left">
                     <div className="bg-blue-100 p-2 rounded-lg shrink-0">
                       <Palette className="text-blue-600 h-5 w-5" />
@@ -78,7 +74,6 @@ export default function Hero() {
                     </div>
                   </div>
 
-                  {/* Step 2 */}
                   <div className="flex items-start gap-4 text-left">
                     <div className="bg-blue-100 p-2 rounded-lg shrink-0">
                       <Printer className="text-blue-600 h-5 w-5" />
@@ -89,7 +84,6 @@ export default function Hero() {
                     </div>
                   </div>
 
-                  {/* Step 3 */}
                   <div className="flex items-start gap-4 text-left">
                     <div className="bg-blue-100 p-2 rounded-lg shrink-0">
                       <Truck className="text-blue-600 h-5 w-5" />
