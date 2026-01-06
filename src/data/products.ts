@@ -10,14 +10,14 @@ export const categoryProducts: Record<string, Product[]> = {
   'saree-boxes': [
     {
       id: '1',
-      name: 'Designer Saree Box', // Keyword: designer saree box
+      name: 'Plain Saree Box', // Keyword: designer saree box
       description: 'Elegant saree cover box with golden accents and traditional design', // Keyword: saree cover box
       image: '/plain box.webp',
       price: 'Custom Quote'
     },
     {
       id: '2',
-      name: 'Fancy Saree Box', // Keyword: fancy saree box
+      name: 'Printed Saree Box', // Keyword: fancy saree box
       description: 'Luxurious pattu saree packing with traditional designs and premium finish', // Keyword: pattu saree packing
       image: '/Printed box.webp',
       price: 'Custom Quote'
@@ -33,14 +33,14 @@ export const categoryProducts: Record<string, Product[]> = {
   'printed-boxes': [
     {
       id: '4',
-      name: 'Saree Paper Box', // Keyword: saree paper box
+      name: 'Luxury Saree Paper Box', // Keyword: saree paper box
       description: 'Full-color printed luxury saree packaging with your custom design', // Keyword: luxury saree packaging
       image: '/Printed box 2.webp',
       price: 'Custom Quote'
     },
     {
       id: '5',
-      name: 'Premium Saree Box Online', // Keyword: saree boxes online
+      name: 'Custom designed saree box', // Keyword: saree boxes online
       description: 'Brand-focused saree box online shopping solutions with high-quality printing', // Keyword: saree box online shopping
       image: '/JP tex.webp',
       price: 'Custom Quote'
