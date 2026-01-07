@@ -15,7 +15,7 @@ export default function SEOHead({
 }: SEOProps) {
   const siteName = 'Premium Box Manufacturing';
   const fullTitle = `${title} | ${siteName}`;
-  const siteImage = "https://premiumpacking.in/4box.webp"; // Required for SERP Image
+  const siteImage = "https://premiumpacking.in/printed box.webp"; // Required for SERP Image
 
   const organizationSchema = {
     "@context": "https://schema.org",
