@@ -1,5 +1,5 @@
 const WhatsAppButton = () => {
-  const phoneNumber = "9189047 52338"; 
+  const phoneNumber = "918904752338"; 
   const customMessage = "Hi Premium saree box, We are looking for saree box like ";
 
   const openWhatsApp = () => {
