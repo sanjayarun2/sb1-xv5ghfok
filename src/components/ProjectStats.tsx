@@ -21,7 +21,7 @@ export default function ProjectStats() {
           Using max-w-7xl ensures the section starts at the exact same vertical line 
           as your logo and hero text.
       */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-extrabold text-gray-900 tracking-tight">
             Global Saree <span className="text-blue-600">Box</span> Impact in Numbers
