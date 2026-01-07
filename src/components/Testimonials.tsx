@@ -83,7 +83,7 @@ export default function Testimonials() {
 
   return (
     <section id="testimonials" className="py-20 bg-gray-50 border-t border-gray-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">Client Testimonials</h2>
           <p className="mt-4 text-xl text-gray-500">What our customers say about our customised saree boxes and premium packaging.</p>

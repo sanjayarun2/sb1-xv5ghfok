@@ -21,7 +21,7 @@ const features = [
 export default function Features() {
   return (
     <section className="py-16 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* NEW HEADING SECTION ADDED HERE */}
         <div className="text-center mb-12">

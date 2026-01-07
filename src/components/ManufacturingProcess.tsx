@@ -25,7 +25,7 @@ const processes = [
 export default function ManufacturingProcess() {
   return (
     <section className="py-12 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10">
           <h2 className="text-4xl font-bold">
           Specialized Saree <span className="text-blue-500">Storage Bags</span>

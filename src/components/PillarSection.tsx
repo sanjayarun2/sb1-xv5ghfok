@@ -18,7 +18,7 @@ export default function PillarSection() {
   return (
     <section className="py-16 bg-gray-50">
       {/* Changed from max-w-4xl to max-w-7xl to match standard page width */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         <header className="mb-10 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
             {content.title}

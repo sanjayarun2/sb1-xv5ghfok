@@ -6,7 +6,7 @@ import Hero from './components/Hero';
 import Features from './components/Features';
 import ManufacturingProcess from './components/ManufacturingProcess';
 import Products from './components/Products';
-import PillarSection from './components/PillarSection'; // Added this import
+import PillarSection from './components/PillarSection';
 import Testimonials from './components/Testimonials';
 import TrustedBrands from './components/TrustedBrands';
 import ProjectStats from './components/ProjectStats';
@@ -22,6 +22,8 @@ import SEOHead from './components/SEOHead';
 import ProductDetails from './pages/ProductDetails';
 import ProcessArticle from './pages/ProcessArticle';
 import AboutUs from './pages/AboutUs';
+// FIX: Ensure this matches your filename whatsappbutton.tsx
+import WhatsAppButton from './components/whatsappbutton'; 
 
 export default function App() {
   return (
@@ -48,17 +50,13 @@ export default function App() {
                 <Route path="stats" element={<StatsAdmin />} />
               </Route>
               
-              {/* --- HOME ROUTE UPDATED --- */}
               <Route path="/" element={
                 <>
                   <Navbar />
                   <div className="space-y-8">
-                    <Hero /> {/* First Topic */}
-                    
-                    <Products /> {/* "Our Box Solutions" */}
-                    
-                    <PillarSection /> {/* Added this section here */}
-                    
+                    <Hero />
+                    <Products />
+                    <PillarSection /> 
                     <Features />
                     <ManufacturingProcess />
                     <ProjectStats />
@@ -68,7 +66,6 @@ export default function App() {
                   <Footer />
                 </>
               } />
-              {/* -------------------------- */}
 
               <Route path="/about" element={
                 <>
@@ -92,6 +89,8 @@ export default function App() {
                 </>
               } />
             </Routes>
+            
+            <WhatsAppButton /> 
           </div>
         </Router>
       </HelmetProvider>

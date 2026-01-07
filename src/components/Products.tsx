@@ -83,7 +83,7 @@ export default function Products() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
       />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           {/* H2 Updated with Keyword */}
           <h2 className="text-4xl font-extrabold text-gray-900 tracking-tight sm:text-5xl">

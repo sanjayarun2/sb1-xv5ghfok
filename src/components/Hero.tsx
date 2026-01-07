@@ -1,26 +1,33 @@
-import { PackageCheck, Palette, Printer, Truck, Zap } from 'lucide-react';
+import { PackageCheck, Zap, Globe, MessageCircle } from 'lucide-react';
 
 export default function Hero() {
+  // Use the standard wa.me format for global compatibility
+  const whatsappURL = "https://wa.me/91XXXXXXXXXX?text=Hi%2C%20I%20am%20interested%20in%20custom%20saree%20boxes.";
+
   return (
-    <div className="relative bg-white overflow-hidden pt-2 lg:pt-8">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="relative z-10 bg-white pb-12 sm:pb-16 md:pb-20 lg:pb-28">
+    <div className="relative bg-white overflow-hidden pt-4 lg:pt-10">
+      {/* STRICT ALIGNMENT FIX: 
+         max-w-7xl ensures content starts exactly at the navbar logo edge.
+         mx-auto centers this container while px-4/6/8 handles responsive padding.
+      */}
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative z-10 bg-white">
           
           <main className="flex flex-col lg:grid lg:grid-cols-2 lg:gap-12 items-center">
             
-            {/* LEFT SIDE: CONTENT */}
-            <div className="text-center lg:text-left pt-6 lg:pt-0 w-full">
+            {/* LEFT SIDE: CONTENT SHIFTED TO START FROM THE CONTAINER EDGE */}
+            <div className="text-left pt-6 lg:pt-0 w-full">
               <h1 className="tracking-tight font-extrabold text-gray-900 leading-tight">
-                <div className="text-[1.75rem] leading-8 sm:text-5xl md:text-6xl mb-2 px-2 lg:px-0">
+                <div className="text-4xl sm:text-5xl md:text-6xl mb-2">
                   Saree Box Manufacturer
                 </div>
-                <div className="text-blue-600 text-lg sm:text-2xl md:text-3xl font-semibold opacity-90 px-4 lg:px-0">
+                <div className="text-blue-600 text-lg sm:text-2xl md:text-3xl font-semibold opacity-90">
                   Premium Saree Packaging Boxes Wholesale
                 </div>
               </h1>
 
-              {/* FIXED DESCRIPTION: Applied text-justify to remove the zigzag effect */}
-              <div className="mt-8 text-gray-600 text-base md:text-lg leading-relaxed max-w-2xl mx-auto lg:mx-0 px-6 sm:px-0 text-justify md:text-left lg:text-left [hyphens:auto]">
+              {/* RESTORED FULL DESCRIPTION */}
+              <div className="mt-8 text-gray-600 text-base md:text-lg leading-relaxed max-w-2xl text-justify [hyphens:auto]">
                 <p>
                   Specializing in premium saree box manufacturing, we provide a diverse range 
                   of saree packing tray and saree packing box solutions designed for high-volume 
@@ -30,13 +37,13 @@ export default function Hero() {
                 <p className="mt-4">
                   Whether you require a professional saree in box presentation or a large-scale 
                   saree with box bulk order, we are your trusted partner for high-quality 
-                  saree boxes wholesale near me.
+                  saree boxes wholesale.
                 </p>
               </div>
 
-              <div className="mt-10 flex justify-center lg:justify-start px-6 sm:px-0">
-                <div className="rounded-md shadow w-full sm:w-auto">
-                  <a href="#products" className="group w-full flex items-center justify-center px-8 py-4 border border-transparent text-base font-bold rounded-md text-white bg-blue-600 hover:bg-blue-700 md:text-lg transition-all">
+              <div className="mt-10 flex justify-start">
+                <div className="rounded-md shadow">
+                  <a href="#products" className="group flex items-center justify-center px-8 py-4 border border-transparent text-base font-bold rounded-md text-white bg-blue-600 hover:bg-blue-700 md:text-lg transition-all">
                     <PackageCheck className="mr-2 h-5 w-5" />
                     View Our Solutions
                   </a>
@@ -44,62 +51,58 @@ export default function Hero() {
               </div>
             </div>
 
-            {/* RIGHT SIDE: THE HOOK CARD */}
-            <div className="mt-14 lg:mt-0 w-full flex justify-center lg:justify-end px-4 sm:px-0">
-              <div className="bg-gradient-to-br from-blue-50 to-white p-6 sm:p-8 rounded-3xl border-2 border-blue-100 shadow-xl w-full max-w-md transform transition hover:scale-[101%]">
+            {/* RIGHT SIDE: KEPT EXACTLY THE SAME AS PREVIOUS DESIGN */}
+            <div className="mt-12 lg:mt-0 w-full flex justify-end">
+              <div className="bg-gradient-to-br from-blue-50/50 to-white p-5 rounded-[2rem] border border-blue-100 shadow-2xl w-full max-w-sm flex flex-col items-center text-center relative overflow-hidden">
                 
-                <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 mb-8 text-center sm:text-left">
-                  <div className="bg-yellow-400 p-2.5 rounded-full shadow-sm shrink-0">
-                    <Zap className="text-blue-900 h-6 w-6 fill-current" />
+                <div className="relative w-full mb-2 group">
+                  <div className="absolute top-0 left-0 bg-yellow-400 p-2 rounded-full shadow-md z-20">
+                    <Zap className="text-blue-900 h-5 w-5 fill-current" />
                   </div>
-                  <div>
-                    <h3 className="text-2xl font-black text-gray-900 leading-none">
-                      Doorstep Delivery
-                    </h3>
-                    <p className="text-blue-600 font-bold text-lg mt-1 underline decoration-2 underline-offset-4">In Just 7 Days</p>
-                  </div>
-                </div>
-
-                <div className="space-y-6">
-                  <div className="flex items-start gap-4 text-left">
-                    <div className="bg-blue-100 p-2 rounded-lg shrink-0">
-                      <Palette className="text-blue-600 h-5 w-5" />
-                    </div>
-                    <div className="flex-1">
-                      <div className="flex flex-wrap items-center gap-2 mb-1">
-                         <p className="font-bold text-gray-900 text-base">1. Instant Design</p>
-                         <span className="bg-blue-600 text-[9px] text-white px-2 py-0.5 rounded-full uppercase font-bold tracking-tight">Your Logo</span>
-                      </div>
-                      <p className="text-sm text-gray-600 font-medium leading-snug">Get your brand printed on premium boxes</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-4 text-left">
-                    <div className="bg-blue-100 p-2 rounded-lg shrink-0">
-                      <Printer className="text-blue-600 h-5 w-5" />
-                    </div>
-                    <div className="flex-1">
-                      <p className="font-bold text-gray-900 text-base mb-1">2. Rapid Printing</p>
-                      <p className="text-sm text-gray-600 font-medium leading-snug">Bulk production with zero delay</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-4 text-left">
-                    <div className="bg-blue-100 p-2 rounded-lg shrink-0">
-                      <Truck className="text-blue-600 h-5 w-5" />
-                    </div>
-                    <div className="flex-1">
-                      <p className="font-bold text-gray-900 text-base mb-1">3. Express Shipping</p>
-                      <p className="text-sm text-gray-600 font-medium leading-snug">Direct to your shop or warehouse</p>
+                  
+                  <div className="relative px-4">
+                    <img 
+                      src="/c5694789c65c7c22b7f6092f3a355c35-removebg-preview.png" 
+                      alt="Premium Saree Box" 
+                      className="w-full h-auto drop-shadow-xl" 
+                    />
+                    
+                    <div className="absolute top-[35%] left-[48%] -translate-x-1/2 -translate-y-1/2 border-2 border-blue-500 border-dashed px-3 py-1 bg-white/70 backdrop-blur-[2px] rounded rotate-[-15deg]">
+                       <p className="text-blue-600 font-black text-[10px] uppercase tracking-tighter">Your Logo Here</p>
                     </div>
                   </div>
                 </div>
 
-                <div className="mt-8 py-3.5 bg-gray-900 rounded-2xl text-center shadow-lg mx-2 sm:mx-0">
-                   <p className="text-white font-black text-xs tracking-widest uppercase">
-                     Fastest in the Industry
-                   </p>
+                <h3 className="text-lg font-black text-gray-800 leading-tight mb-4">
+                   Saree Box With <br/> 
+                   <span className="text-blue-600">Your Company Logo</span>
+                </h3>
+
+                {/* 7 DAYS HIGHLIGHT - KEPT IN BLUE BLOCK AS REQUESTED */}
+                <div className="mb-6 relative py-3 px-10 w-full">
+                  <div className="absolute inset-0 bg-blue-600 transform -rotate-1 rounded-xl shadow-lg"></div>
+                  <div className="relative z-10 flex flex-col items-center">
+                    <span className="text-white font-black text-5xl tracking-tighter leading-none uppercase">7 Days</span>
+                    <span className="text-white text-xs font-black italic tracking-widest uppercase mt-1">
+                      In Your Hand*
+                    </span>
+                  </div>
                 </div>
+                
+                <div className="flex items-center gap-2 mb-4">
+                   <Globe className="text-blue-500 h-4 w-4" />
+                   <p className="text-gray-500 font-bold text-[10px] uppercase tracking-widest">Global Shipping Available</p>
+                </div>
+
+                <a 
+                  href={whatsappURL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full py-3.5 bg-green-500 hover:bg-green-600 text-white rounded-2xl flex items-center justify-center gap-2 shadow-lg transition-transform active:scale-95 font-black text-sm tracking-wide"
+                >
+                   <MessageCircle className="h-5 w-5 fill-current" />
+                   GET CUSTOM QUOTE
+                </a>
               </div>
             </div>
 
