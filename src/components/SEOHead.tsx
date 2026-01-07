@@ -15,14 +15,16 @@ export default function SEOHead({
 }: SEOProps) {
   const siteName = 'Premium Box Manufacturing';
   const fullTitle = `${title} | ${siteName}`;
-  const siteImage = "https://premiumpacking.in/printed box.webp"; // Required for SERP Image
+  
+  // FIX: Encoded the space in the URL (space must be %20)
+  const siteImage = "https://premiumpacking.in/printed%20box.webp"; 
 
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": siteName,
     "description": description,
-    "image": siteImage, // Fix for SERP image
+    "image": siteImage, 
     "url": canonicalUrl || "https://premiumpacking.in",
     "telephone": "+91 8904752338",
     "address": [
@@ -45,7 +47,6 @@ export default function SEOHead({
 
   return (
     <Helmet>
-      {/* Google Tag (gtag.js) Fix */}
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-RZLWYZYQT7"></script>
       <script>
         {`
@@ -62,24 +63,26 @@ export default function SEOHead({
       
       {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
       
+      {/* FIX: Required to tell Google it is allowed to show the image in search results */}
+      <meta name="robots" content="max-image-preview:large" />
+      
       <meta property="og:site_name" content={siteName} />
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={description} />
       <meta property="og:type" content="website" />
-      <meta property="og:image" content={siteImage} /> {/* Fix for SERP image */}
+      <meta property="og:image" content={siteImage} />
       {canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
       
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={siteImage} /> {/* Fix for SERP image */}
+      <meta name="twitter:image" content={siteImage} />
       
       <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
       <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
       <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
       <link rel="manifest" href="/site.webmanifest" />
       
-      {/* Direct Google Image Fixes */}
       <meta name="thumbnail" content={siteImage} />
       <meta name="image" content={siteImage} />
       
