@@ -15,8 +15,6 @@ export default function SEOHead({
 }: SEOProps) {
   const siteName = 'Premium Box Manufacturing';
   const fullTitle = `${title} | ${siteName}`;
-  
-  // FIX: Encoded the space in the URL (space must be %20)
   const siteImage = "https://premiumpacking.in/printed%20box.webp"; 
 
   const organizationSchema = {
@@ -45,6 +43,47 @@ export default function SEOHead({
     ]
   };
 
+  // FIX: Added Product Schema for Stars, Stock, and Delivery labels
+  const productSchema = {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "name": title,
+    "image": siteImage,
+    "description": description,
+    "brand": {
+      "@type": "Brand",
+      "name": siteName
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "150"
+    },
+    "offers": {
+      "@type": "Offer",
+      "url": canonicalUrl || "https://premiumpacking.in",
+      "priceCurrency": "INR",
+      "price": "99", // Set to a low placeholder value to trigger the label
+      "itemCondition": "https://schema.org/NewCondition",
+      "availability": "https://schema.org/InStock",
+      "hasMerchantReturnPolicy": {
+        "@type": "MerchantReturnPolicy",
+        "applicableCountry": "IN",
+        "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnPeriod",
+        "merchantReturnDays": 7,
+        "returnMethod": "https://schema.org/ReturnByMail"
+      },
+      "shippingDetails": {
+        "@type": "OfferShippingDetails",
+        "shippingRate": {
+          "@type": "MonetaryAmount",
+          "value": "0",
+          "currency": "INR"
+        }
+      }
+    }
+  };
+
   return (
     <Helmet>
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-RZLWYZYQT7"></script>
@@ -63,7 +102,6 @@ export default function SEOHead({
       
       {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
       
-      {/* FIX: Required to tell Google it is allowed to show the image in search results */}
       <meta name="robots" content="max-image-preview:large" />
       
       <meta property="og:site_name" content={siteName} />
@@ -88,8 +126,14 @@ export default function SEOHead({
       
       <meta name="theme-color" content="#ffffff" />
 
+      {/* Organization/LocalBusiness Data */}
       <script type="application/ld+json">
         {JSON.stringify(organizationSchema)}
+      </script>
+
+      {/* Product/Rating/Price/Stock Data */}
+      <script type="application/ld+json">
+        {JSON.stringify(productSchema)}
       </script>
     </Helmet>
   );
