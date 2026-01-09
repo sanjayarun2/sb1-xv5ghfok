@@ -17,13 +17,14 @@ export default function Hero() {
             
             {/* LEFT SIDE: CONTENT SHIFTED TO START FROM THE CONTAINER EDGE */}
             <div className="text-left pt-6 lg:pt-0 w-full">
+              {/* FIX: Replaced inner divs with spans for valid H1 semantic structure */}
               <h1 className="tracking-tight font-extrabold text-gray-900 leading-tight">
-                <div className="text-4xl sm:text-5xl md:text-6xl mb-2">
+                <span className="block text-4xl sm:text-5xl md:text-6xl mb-2">
                   Saree Box Manufacturer
-                </div>
-                <div className="text-blue-600 text-lg sm:text-2xl md:text-3xl font-semibold opacity-90">
+                </span>
+                <span className="block text-blue-600 text-lg sm:text-2xl md:text-3xl font-semibold opacity-90">
                   Premium Saree Packaging Boxes Wholesale
-                </div>
+                </span>
               </h1>
 
               {/* RESTORED FULL DESCRIPTION */}
