@@ -22,7 +22,6 @@ import SEOHead from './components/SEOHead';
 import ProductDetails from './pages/ProductDetails';
 import ProcessArticle from './pages/ProcessArticle';
 import AboutUs from './pages/AboutUs';
-// FIX: Ensure this matches your filename whatsappbutton.tsx
 import WhatsAppButton from './components/whatsappbutton'; 
 
 export default function App() {
@@ -31,12 +30,6 @@ export default function App() {
       <HelmetProvider>
         <Router>
           <div className="min-h-screen bg-white">
-            <SEOHead 
-              title="Saree Box Manufacturer | Premium Saree Packaging Boxes Wholesale"
-              description="Leading saree box manufacturer offering custom saree packing boxes, wedding saree boxes, and silk saree packaging at wholesale prices. Pan-India delivery."
-              keywords="saree box manufacturer, saree packaging box, saree boxes wholesale, saree box price, wedding saree packing box, silk saree box, saree gift box"
-              canonicalUrl="https://premiumpacking.in"
-            />
             <Routes>
               <Route path="/admin" element={<AdminLogin />} />
               <Route path="/admin/*" element={
@@ -52,6 +45,12 @@ export default function App() {
               
               <Route path="/" element={
                 <>
+                  <SEOHead 
+                    title="Saree Box Manufacturer | Premium Saree Packaging Boxes Wholesale"
+                    description="Leading saree box manufacturer offering custom saree packing boxes, wedding saree boxes, and silk saree packaging at wholesale prices. Pan-India delivery."
+                    keywords="saree box manufacturer, saree packaging box, saree boxes wholesale, saree box price, wedding saree packing box, silk saree box, saree gift box"
+                    canonicalUrl="https://premiumpacking.in"
+                  />
                   <Navbar />
                   <div className="space-y-8">
                     <Hero />
@@ -69,6 +68,11 @@ export default function App() {
 
               <Route path="/about" element={
                 <>
+                  <SEOHead 
+                    title="About Us | Premium Box Manufacturing"
+                    description="Leading manufacturer of premium packaging solutions based in Sivakasi and Elampillai."
+                    canonicalUrl="https://premiumpacking.in/about"
+                  />
                   <Navbar />
                   <AboutUs />
                   <Footer />
