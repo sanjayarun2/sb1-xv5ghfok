@@ -1,4 +1,5 @@
 import { MapPin, Phone, Mail } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const socialLinks = [
   { name: 'Instagram', url: 'https://instagram.com', icon: 'https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/instagram.svg' },
@@ -50,7 +51,7 @@ export default function Footer() {
         "@type": "Organization",
         "@id": "https://premiumpacking.in/#organization",
         "name": "Premium Box Manufacturing",
-        "url": "https://premiumpackin.in",
+        "url": "https://premiumpacking.in",
         "logo": {
           "@type": "ImageObject",
           "url": "https://premiumpacking.in/logo.png",
@@ -97,32 +98,50 @@ export default function Footer() {
       
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-12">
         
-        {/* Company Info */}
-        <div className="mb-12">
-          <h1 className="text-2xl font-bold text-gray-900 mb-2">Premium Box Manufacturing</h1>
-          <h2 className="text-xl text-gray-700 mb-2">Fulfilling your packaging needs with excellence</h2>
-          <p className="text-gray-600">Trusted to deliver premium packaging solutions since 2010</p>
-        </div>
-
-        {/* Colored Social Media Icons */}
-        <div className="flex flex-wrap items-center gap-6 mb-12">
-          {socialLinks.map((social) => (
-            <a key={social.name} href={social.url} target="_blank" rel="noopener noreferrer" className="transition-transform hover:scale-110">
-              <img src={social.icon} alt={social.name} className="w-6 h-6 object-contain" />
-            </a>
-          ))}
-        </div>
-
-        {/* Addresses */}
-        <div className="grid md:grid-cols-2 gap-8 mb-12">
-          {addresses.map((location, index) => (
-            <div key={index} className="space-y-2">
-              <h3 className="font-semibold text-gray-900">{location.title}</h3>
-              <div className="flex items-start space-x-2 text-gray-600"><MapPin className="w-5 h-5 flex-shrink-0 mt-1" /><span>{location.address}</span></div>
-              <div className="flex items-center space-x-2 text-gray-600"><Phone className="w-5 h-5" /><span>{location.phone}</span></div>
-              <div className="flex items-center space-x-2 text-gray-600"><Mail className="w-5 h-5" /><span>{location.email}</span></div>
+        {/* Company Info & Quick Links Grid */}
+        <div className="grid lg:grid-cols-3 gap-12 mb-12">
+          <div className="lg:col-span-1">
+            <h1 className="text-2xl font-bold text-gray-900 mb-2">Premium Box Manufacturing</h1>
+            <h2 className="text-xl text-gray-700 mb-2">Fulfilling your packaging needs with excellence</h2>
+            <p className="text-gray-600 mb-6">Trusted to deliver premium packaging solutions since 2010</p>
+            
+            {/* Colored Social Media Icons */}
+            <div className="flex flex-wrap items-center gap-6">
+              {socialLinks.map((social) => (
+                <a key={social.name} href={social.url} target="_blank" rel="noopener noreferrer" className="transition-transform hover:scale-110">
+                  <img src={social.icon} alt={social.name} className="w-6 h-6 object-contain" />
+                </a>
+              ))}
             </div>
-          ))}
+          </div>
+
+          {/* FIX: Internal Links Column for Product SEO */}
+          <div className="lg:col-span-1">
+            <h3 className="text-sm font-bold text-gray-900 mb-6 uppercase tracking-wider">Packaging Solutions</h3>
+            <ul className="grid grid-cols-1 gap-y-2 text-gray-600">
+              <li><Link to="/product/1" className="hover:text-blue-600 transition-colors">Plain Saree Box</Link></li>
+              <li><Link to="/product/2" className="hover:text-blue-600 transition-colors">Printed Saree Box</Link></li>
+              <li><Link to="/product/3" className="hover:text-blue-600 transition-colors">Customized Saree Box</Link></li>
+              <li><Link to="/product/4" className="hover:text-blue-600 transition-colors">Luxury Saree Paper Box</Link></li>
+              <li><Link to="/product/5" className="hover:text-blue-600 transition-colors">Custom designed saree box</Link></li>
+              <li><Link to="/product/6" className="hover:text-blue-600 transition-colors">Saree Storage Cartons</Link></li>
+            </ul>
+          </div>
+
+          <div className="lg:col-span-1">
+             <h3 className="text-sm font-bold text-gray-900 mb-6 uppercase tracking-wider">Contact Details</h3>
+             <div className="space-y-6">
+                {addresses.map((location, index) => (
+                  <div key={index} className="space-y-1">
+                    <p className="font-semibold text-gray-900 text-sm">{location.title}</p>
+                    <div className="flex items-start space-x-2 text-gray-600 text-sm">
+                      <MapPin className="w-4 h-4 flex-shrink-0 mt-1" />
+                      <span>{location.address}</span>
+                    </div>
+                  </div>
+                ))}
+             </div>
+          </div>
         </div>
 
         {/* Payment and Shipping */}
