@@ -74,7 +74,8 @@ export default function ProductDetails() {
         description={product.description}
         keywords={`${product.name}, custom packaging, saree box wholesale, luxury saree boxes, premiumpacking.in`}
         canonicalUrl={`https://premiumpacking.in/product/${product.id}`}
-        image={`https://premiumpacking.in${product.image}`}
+        // FIX: Ensure path is absolute for SEO bots
+        image={product.image.startsWith('http') ? product.image : `https://premiumpacking.in${product.image}`}
       />
       
       <div className="min-h-screen bg-gray-50">
@@ -87,6 +88,7 @@ export default function ProductDetails() {
 
           <div className="bg-white rounded-lg shadow-lg overflow-hidden mb-8">
             <div className="p-6">
+              {/* Correct H1 usage for Product Page ranking */}
               <h1 className="text-3xl font-bold text-gray-900 mb-2">{product.name}</h1>
               <p className="text-lg text-gray-600 leading-relaxed">{product.description}</p>
               <div className="mt-4">
@@ -122,7 +124,6 @@ export default function ProductDetails() {
             </Swiper>
           </div>
 
-          {/* NEW CONTENT SECTION: Why choose this for Saree Packing */}
           <div className="space-y-8">
             <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
               <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center">
