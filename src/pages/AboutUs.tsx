@@ -2,6 +2,8 @@ import React from 'react';
 import { MapPin, Phone, Mail, Award, Users, Factory, Truck } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
 import Breadcrumbs from '../components/Breadcrumbs';
+// FIX: Import the Map component
+import StoreLocator from '../components/MapLocator';
 
 export default function AboutUs() {
   return (
@@ -65,7 +67,7 @@ export default function AboutUs() {
 
           <div className="bg-gray-50 rounded-lg p-8 mb-16">
             <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Our Locations</h2>
-            <div className="grid md:grid-cols-2 gap-8">
+            <div className="grid md:grid-cols-2 gap-8 mb-8">
               <div className="space-y-4">
                 <h3 className="text-xl font-semibold">Main Factory</h3>
                 <div className="flex items-start space-x-3">
@@ -96,6 +98,11 @@ export default function AboutUs() {
                   <p className="text-gray-600">distribution@premiumbox.com</p>
                 </div>
               </div>
+            </div>
+
+            {/* FIX: Map integrated at the bottom of the locations box */}
+            <div className="mt-8 pt-8 border-t border-gray-200">
+               <StoreLocator />
             </div>
           </div>
         </div>
