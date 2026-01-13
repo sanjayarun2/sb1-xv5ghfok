@@ -4,18 +4,34 @@ import { APIProvider, Map, AdvancedMarker, Pin, useMap } from '@vis.gl/react-goo
 import '@googlemaps/extended-component-library/place_picker.js';
 import '@googlemaps/extended-component-library/api_loader.js';
 
+// --- SUB-COMPONENT FOR SEARCH LOGIC ---
+const MapEvents = ({ pickerRef }: { pickerRef: React.RefObject<any> }) => {
+  const map = useMap(); // Now this will work because it's a child of <Map>
+
+  useEffect(() => {
+    const picker = pickerRef.current;
+    if (!picker || !map) return;
+
+    const handlePlaceChange = () => {
+      const selectedPlace = picker.value;
+      if (selectedPlace && selectedPlace.location) {
+        map.panTo(selectedPlace.location);
+        map.setZoom(15);
+      }
+    };
+
+    picker.addEventListener('gmpx-placechange', handlePlaceChange);
+    return () => picker.removeEventListener('gmpx-placechange', handlePlaceChange);
+  }, [map, pickerRef]);
+
+  return null;
+};
+
 const StoreLocator = () => {
-  // YOUR PROVIDED API KEY
   const API_KEY = "AIzaSyBK2judK1UoHIAqacFYeyw9lTUojJjNVeE"; 
-  
-  // DEBUG LINE: This will confirm in your browser console that the key is loaded
-  console.log("Google Maps API Key being used:", API_KEY);
-
-  // NOTE: Replace 'DEMO_MAP_ID' with a real ID from your "Map Management" console 
-  // to enable Advanced Markers and remove watermarks.
   const MAP_ID = "daa5ca8abf0bde4d70f436d4"; 
+  const pickerRef = useRef<any>(null);
 
-  // ENTER YOUR ACTUAL COORDINATES HERE
   const locations = [
     { 
       id: 'shop', 
@@ -29,35 +45,14 @@ const StoreLocator = () => {
     }
   ];
 
-  // --- FIX: Logic to make the Auto-suggest work ---
-  const map = useMap();
-  const pickerRef = useRef<any>(null);
-
-  useEffect(() => {
-    const picker = pickerRef.current;
-    if (!picker || !map) return;
-
-    // This listens for when you click a suggestion in the search bar
-    const handlePlaceChange = () => {
-      const selectedPlace = picker.value;
-      if (selectedPlace && selectedPlace.location) {
-        map.panTo(selectedPlace.location);
-        map.setZoom(15);
-      }
-    };
-
-    picker.addEventListener('gmpx-placechange', handlePlaceChange);
-    return () => picker.removeEventListener('gmpx-placechange', handlePlaceChange);
-  }, [map]);
-  // ----------------------------------------------
-
   return (
     <div className="h-[500px] w-full rounded-xl overflow-hidden shadow-2xl border border-gray-200">
       <APIProvider 
         apiKey={API_KEY} 
+        // Force loading of places library
+        libraries={['places']}
         solutionChannel="GMP_GE_mapsandplacesautocomplete_v2"
         onLoad={() => console.log("Google Maps API loaded successfully!")}
-        onError={(error) => console.error("Google Maps Load Error:", error)}
       >
         <Map
           defaultCenter={locations[0].pos}
@@ -66,29 +61,31 @@ const StoreLocator = () => {
           disableDefaultUI={false}
           mapTypeControl={false}
         >
+          {/* This component handles the search movement */}
+          <MapEvents pickerRef={pickerRef} />
+
           {/* SEARCH BAR (Place Picker) */}
-          <div slot="control-block-start-inline-start" className="p-4" style={{zIndex: 1000}}>
+          <div slot="control-block-start-inline-start" style={{ padding: '16px', zIndex: 9999 }}>
             <gmpx-place-picker 
-              ref={pickerRef} // Added reference for the fix
+              ref={pickerRef}
               placeholder="Search near premiumpacking.in" 
               style={{ 
                 width: '300px', 
                 height: '45px',
                 backgroundColor: 'white',
-                display: 'block'
+                borderRadius: '8px',
+                boxShadow: '0 2px 6px rgba(0,0,0,0.3)',
+                display: 'block',
+                position: 'relative'
               }} 
             />
           </div>
 
-          {/* RETAIL SHOP MARKER (Gold) */}
-          <AdvancedMarker position={locations[0].pos} title={locations[0].name}>
-            <Pin background={'#FBBC04'} glyphColor={'#000'} borderColor={'#000'} />
-          </AdvancedMarker>
-
-          {/* MANUFACTURING PLANT MARKER (Blue) */}
-          <AdvancedMarker position={locations[1].pos} title={locations[1].name}>
-            <Pin background={'#4285F4'} glyphColor={'#fff'} borderColor={'#000'} />
-          </AdvancedMarker>
+          {locations.map((loc) => (
+            <AdvancedMarker key={loc.id} position={loc.pos} title={loc.name}>
+              <Pin background={loc.id === 'shop' ? '#FBBC04' : '#4285F4'} />
+            </AdvancedMarker>
+          ))}
 
         </Map>
       </APIProvider>
