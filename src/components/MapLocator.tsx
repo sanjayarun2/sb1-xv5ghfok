@@ -67,14 +67,14 @@ const StoreLocator = () => {
           mapTypeControl={false}
         >
           {/* SEARCH BAR (Place Picker) */}
-          <div slot="control-block-start-inline-start" className="p-4">
+          <div slot="control-block-start-inline-start" className="p-4" style={{zIndex: 1000}}>
             <gmpx-place-picker 
               ref={pickerRef} // Added reference for the fix
               placeholder="Search near premiumpacking.in" 
               style={{ 
                 width: '300px', 
                 height: '45px',
-                backgroundcolor: 'white',
+                backgroundColor: 'white',
                 display: 'block'
               }} 
             />
