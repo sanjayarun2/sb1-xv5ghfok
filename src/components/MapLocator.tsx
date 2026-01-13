@@ -1,59 +1,18 @@
-import React, { useEffect, useRef } from 'react';
-import { APIProvider, Map, AdvancedMarker, Pin, useMap } from '@vis.gl/react-google-maps';
-// This registers the search bar (place-picker) component
-import '@googlemaps/extended-component-library/place_picker.js';
-import '@googlemaps/extended-component-library/api_loader.js';
-
-// --- SUB-COMPONENT FOR SEARCH LOGIC ---
-const MapEvents = ({ pickerRef }: { pickerRef: React.RefObject<any> }) => {
-  const map = useMap(); // Now this will work because it's a child of <Map>
-
-  useEffect(() => {
-    const picker = pickerRef.current;
-    if (!picker || !map) return;
-
-    const handlePlaceChange = () => {
-      const selectedPlace = picker.value;
-      if (selectedPlace && selectedPlace.location) {
-        map.panTo(selectedPlace.location);
-        map.setZoom(15);
-      }
-    };
-
-    picker.addEventListener('gmpx-placechange', handlePlaceChange);
-    return () => picker.removeEventListener('gmpx-placechange', handlePlaceChange);
-  }, [map, pickerRef]);
-
-  return null;
-};
+import React, { useEffect, useRef, useState } from 'react';
+import { APIProvider, Map, AdvancedMarker, Pin, useMap, useMapsLibrary } from '@vis.gl/react-google-maps';
 
 const StoreLocator = () => {
   const API_KEY = "AIzaSyBK2judK1UoHIAqacFYeyw9lTUojJjNVeE"; 
   const MAP_ID = "daa5ca8abf0bde4d70f436d4"; 
-  const pickerRef = useRef<any>(null);
-
+  
   const locations = [
-    { 
-      id: 'shop', 
-      name: 'Retail Shop', 
-      pos: { lat: 11.608279167081387, lng: 78.00204346846581 } , 
-    },
-    { 
-      id: 'plant', 
-      name: 'Manufacturing Plant', 
-      pos: { lat: 11.6750, lng: 78.1550 } 
-    }
+    { id: 'shop', name: 'Retail Shop', pos: { lat: 11.608279167081387, lng: 78.00204346846581 } },
+    { id: 'plant', name: 'Manufacturing Plant', pos: { lat: 11.6750, lng: 78.1550 } }
   ];
 
   return (
     <div className="h-[500px] w-full rounded-xl overflow-hidden shadow-2xl border border-gray-200">
-      <APIProvider 
-        apiKey={API_KEY} 
-        // Force loading of places library
-        libraries={['places']}
-        solutionChannel="GMP_GE_mapsandplacesautocomplete_v2"
-        onLoad={() => console.log("Google Maps API loaded successfully!")}
-      >
+      <APIProvider apiKey={API_KEY} libraries={['places', 'marker']}>
         <Map
           defaultCenter={locations[0].pos}
           defaultZoom={13}
@@ -61,34 +20,61 @@ const StoreLocator = () => {
           disableDefaultUI={false}
           mapTypeControl={false}
         >
-          {/* This component handles the search movement */}
-          <MapEvents pickerRef={pickerRef} />
-
-          {/* SEARCH BAR (Place Picker) */}
-          <div slot="control-block-start-inline-start" style={{ padding: '16px', zIndex: 9999 }}>
-            <gmpx-place-picker 
-              ref={pickerRef}
-              placeholder="Search near premiumpacking.in" 
-              style={{ 
-                width: '300px', 
-                height: '45px',
-                backgroundColor: 'white',
-                borderRadius: '8px',
-                boxShadow: '0 2px 6px rgba(0,0,0,0.3)',
-                display: 'block',
-                position: 'relative'
-              }} 
-            />
-          </div>
+          {/* THE SEARCH COMPONENT */}
+          <PlaceAutocomplete onPlaceSelect={(place) => console.log(place)} />
 
           {locations.map((loc) => (
             <AdvancedMarker key={loc.id} position={loc.pos} title={loc.name}>
               <Pin background={loc.id === 'shop' ? '#FBBC04' : '#4285F4'} />
             </AdvancedMarker>
           ))}
-
         </Map>
       </APIProvider>
+    </div>
+  );
+};
+
+// --- THIS IS THE OTHER METHOD LOGIC (WORKING AUTO-SUGGEST) ---
+const PlaceAutocomplete = ({ onPlaceSelect }: { onPlaceSelect: (place: google.maps.places.PlaceResult | null) => void }) => {
+  const map = useMap(); //
+  const places = useMapsLibrary('places'); //
+  const inputRef = useRef<HTMLInputElement>(null);
+  const [autocomplete, setAutocomplete] = useState<google.maps.places.Autocomplete | null>(null);
+
+  useEffect(() => {
+    if (!places || !inputRef.current) return;
+
+    const options = {
+      fields: ['geometry', 'name', 'formatted_address'],
+      componentRestrictions: { country: 'in' } // Restricts search to India
+    };
+
+    const ac = new places.Autocomplete(inputRef.current, options);
+    setAutocomplete(ac);
+  }, [places]);
+
+  useEffect(() => {
+    if (!autocomplete || !map) return;
+
+    autocomplete.addListener('place_changed', () => {
+      const place = autocomplete.getPlace();
+      
+      if (place.geometry?.location) {
+        map.panTo(place.geometry.location); //
+        map.setZoom(15);
+        onPlaceSelect(place);
+      }
+    });
+  }, [autocomplete, map, onPlaceSelect]);
+
+  return (
+    <div className="absolute top-4 left-4 z-[1000]">
+      <input
+        ref={inputRef}
+        placeholder="Search for your city or address..."
+        className="w-[300px] h-[45px] px-4 rounded-lg shadow-lg border-none outline-none text-gray-700"
+        style={{ backgroundColor: 'white' }}
+      />
     </div>
   );
 };
