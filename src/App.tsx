@@ -78,7 +78,7 @@ export default function App() {
                   <Footer />
                 </>
               } />
-              <Route path="/product/:id" element={
+              <Route path="/product/:slug" element={
                 <>
                   <Navbar />
                   <ProductDetails />
