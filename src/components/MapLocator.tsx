@@ -7,6 +7,9 @@ const StoreLocator = () => {
   // YOUR PROVIDED API KEY
   const API_KEY = "AIzaSyBK2judK1UoHIAqacFYeyw9lTUojJjNVeE"; 
   
+  // DEBUG LINE: This will confirm in your browser console that the key is loaded
+  console.log("Google Maps API Key being used:", API_KEY);
+
   // NOTE: Replace 'DEMO_MAP_ID' with a real ID from your "Map Management" console 
   // to enable Advanced Markers and remove watermarks.
   const MAP_ID = "daa5ca8abf0bde4d70f436d4"; 
@@ -17,7 +20,7 @@ const StoreLocator = () => {
     { 
       id: 'shop', 
       name: 'Retail Shop', 
-      pos: { lat: 11.6643, lng: 78.1460 } 
+      pos: { lat: 11.608279167081387, lng: 78.00204346846581 } , 
     },
     { 
       id: 'plant', 
@@ -28,7 +31,12 @@ const StoreLocator = () => {
 
   return (
     <div className="h-[500px] w-full rounded-xl overflow-hidden shadow-2xl border border-gray-200">
-      <APIProvider apiKey={API_KEY} solutionChannel="GMP_GE_mapsandplacesautocomplete_v2">
+      <APIProvider 
+        apiKey={API_KEY} 
+        solutionChannel="GMP_GE_mapsandplacesautocomplete_v2"
+        onLoad={() => console.log("Google Maps API loaded successfully!")}
+        onError={(error) => console.error("Google Maps Load Error:", error)}
+      >
         <Map
           defaultCenter={locations[0].pos}
           defaultZoom={13}
