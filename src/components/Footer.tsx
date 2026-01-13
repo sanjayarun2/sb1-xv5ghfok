@@ -98,11 +98,12 @@ export default function Footer() {
       
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-12">
         
+        {/* Main Sections Grid */}
         <div className="grid lg:grid-cols-3 gap-12 mb-12">
           {/* Column 1: Brand Info */}
           <div className="lg:col-span-1">
             <h3 className="text-sm font-bold text-gray-900 mb-6 uppercase tracking-wider">Premium Box Manufacturing</h3>
-            <p className="text-sm text-gray-600 mb-2 font-medium">Fulfilling your packaging needs with excellence</p>
+            <p className="text-sm text-gray-600 mb-2">Fulfilling your packaging needs with excellence</p>
             <p className="text-sm text-gray-600 mb-6">Trusted to deliver premium packaging solutions since 2010</p>
             
             <div className="flex flex-wrap items-center gap-6">
@@ -114,7 +115,7 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Column 2: Quick Links */}
+          {/* Column 2: Packaging Solutions */}
           <div className="lg:col-span-1">
             <h3 className="text-sm font-bold text-gray-900 mb-6 uppercase tracking-wider">Packaging Solutions</h3>
             <ul className="space-y-2 text-sm text-gray-600">
@@ -127,24 +128,26 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 3: Contacts */}
+          {/* Column 3: Contact Details */}
           <div className="lg:col-span-1">
              <h3 className="text-sm font-bold text-gray-900 mb-6 uppercase tracking-wider">Contact Details</h3>
              <div className="space-y-6">
                 {addresses.map((location, index) => (
                   <div key={index} className="space-y-2">
-                    <p className="font-bold text-gray-900 text-sm uppercase tracking-tight">{location.title}</p>
+                    <p className="font-bold text-gray-900 text-sm uppercase">{location.title}</p>
                     <div className="flex items-start space-x-2 text-sm text-gray-600">
-                      <MapPin className="w-4 h-4 flex-shrink-0 mt-0.5" />
+                      <MapPin className="w-4 h-4 flex-shrink-0 mt-0.5 text-gray-400" />
                       <span>{location.address}</span>
                     </div>
-                    <div className="flex items-center space-x-2 text-sm text-gray-600">
-                      <Phone className="w-4 h-4 flex-shrink-0" />
-                      <span>{location.phone}</span>
+                    {/* CLICK TO CALL LINK */}
+                    <div className="flex items-center space-x-2 text-sm text-gray-600 hover:text-blue-600 transition-colors">
+                      <Phone className="w-4 h-4 flex-shrink-0 text-gray-400" />
+                      <a href={`tel:${location.phone.replace(/\s+/g, '')}`}>{location.phone}</a>
                     </div>
-                    <div className="flex items-center space-x-2 text-sm text-gray-600">
-                      <Mail className="w-4 h-4 flex-shrink-0" />
-                      <span className="truncate">{location.email}</span>
+                    {/* CLICK TO EMAIL LINK */}
+                    <div className="flex items-center space-x-2 text-sm text-gray-600 hover:text-blue-600 transition-colors">
+                      <Mail className="w-4 h-4 flex-shrink-0 text-gray-400" />
+                      <a href={`mailto:${location.email}`} className="truncate">{location.email}</a>
                     </div>
                   </div>
                 ))}
@@ -155,10 +158,10 @@ export default function Footer() {
         {/* Payment & Shipping Section */}
         <div className="grid lg:grid-cols-2 gap-8 border-t border-gray-200 pt-10">
           <div>
-            <h4 className="text-sm font-bold text-gray-900 mb-6 uppercase tracking-wider">Payment methods</h4>
+            <h4 className="text-sm font-bold text-gray-900 mb-6 uppercase tracking-wider">Payment methods:</h4>
             <div className="flex flex-wrap items-center gap-x-8 gap-y-4">
               {paymentMethods.map((method) => (
-                <div key={method.name} className="h-6 w-12 flex items-center justify-center">
+                <div key={method.name} className="h-8 w-16 flex items-center justify-center">
                   <img src={method.logo} alt={method.name} className="max-h-full max-w-full object-contain" />
                 </div>
               ))}
@@ -166,12 +169,12 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-sm font-bold text-gray-900 mb-6 uppercase tracking-wider">We deliver with</h4>
+            <h4 className="text-sm font-bold text-gray-900 mb-6 uppercase tracking-wider">We deliver with:</h4>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
               {deliveryPartners.map((partner) => (
                 <div 
                   key={partner.name} 
-                  className="h-12 flex items-center justify-center bg-white border border-gray-100 rounded-lg p-2 shadow-sm"
+                  className="h-16 flex items-center justify-center bg-white border border-gray-100 rounded-lg p-3 shadow-sm"
                 >
                   <img 
                     src={partner.logo} 
