@@ -6,16 +6,24 @@ const StoreLocator = () => {
   const MAP_ID = "daa5ca8abf0bde4d70f436d4"; 
   
   const locations = [
-    { id: 'shop', name: 'Retail Shop', pos: { lat: 11.608279167081387, lng: 78.00204346846581 } },
-    { id: 'plant', name: 'Manufacturing Plant', pos: { lat: 11.6750, lng: 78.1550 } }
+    { 
+      id: 'elampillai', 
+      name: 'Distribution Center (Elampillai)', 
+      pos: { lat: 11.608279167081387, lng: 78.00204346846581 } 
+    },
+    { 
+      id: 'sivakasi', 
+      name: 'Main Factory (Sivakasi)', 
+      pos: { lat: 11.6750, lng: 78.1550 } 
+    }
   ];
 
   return (
     <div className="h-[500px] w-full rounded-xl overflow-hidden shadow-2xl border border-gray-200">
       <APIProvider apiKey={API_KEY} libraries={['places', 'marker']}>
         <Map
-          defaultCenter={locations[0].pos}
-          defaultZoom={13}
+          defaultCenter={locations[0].pos} // Starts view at Elampillai
+          defaultZoom={10} // Zoomed out slightly to see both regions if needed
           mapId={MAP_ID}
           disableDefaultUI={false}
           mapTypeControl={false}
@@ -25,7 +33,11 @@ const StoreLocator = () => {
 
           {locations.map((loc) => (
             <AdvancedMarker key={loc.id} position={loc.pos} title={loc.name}>
-              <Pin background={loc.id === 'shop' ? '#FBBC04' : '#4285F4'} />
+              <Pin 
+                background={loc.id === 'elampillai' ? '#FBBC04' : '#4285F4'} 
+                glyphColor={'#000'} 
+                borderColor={'#000'} 
+              />
             </AdvancedMarker>
           ))}
         </Map>
@@ -34,10 +46,9 @@ const StoreLocator = () => {
   );
 };
 
-// --- THIS IS THE OTHER METHOD LOGIC (WORKING AUTO-SUGGEST) ---
 const PlaceAutocomplete = ({ onPlaceSelect }: { onPlaceSelect: (place: google.maps.places.PlaceResult | null) => void }) => {
-  const map = useMap(); //
-  const places = useMapsLibrary('places'); //
+  const map = useMap(); 
+  const places = useMapsLibrary('places'); 
   const inputRef = useRef<HTMLInputElement>(null);
   const [autocomplete, setAutocomplete] = useState<google.maps.places.Autocomplete | null>(null);
 
@@ -46,7 +57,18 @@ const PlaceAutocomplete = ({ onPlaceSelect }: { onPlaceSelect: (place: google.ma
 
     const options = {
       fields: ['geometry', 'name', 'formatted_address'],
-      componentRestrictions: { country: 'in' } // Restricts search to India
+      componentRestrictions: { country: 'in' }, 
+      
+      // BIAS: Prioritizes results near Elampillai
+      locationBias: { 
+        lat: 11.608279167081387, 
+        lng: 78.00204346846581 
+      },
+      // ORIGIN: Helps rank the closest branch first in the list
+      origin: { 
+        lat: 11.608279167081387, 
+        lng: 78.00204346846581 
+      }
     };
 
     const ac = new places.Autocomplete(inputRef.current, options);
@@ -60,7 +82,7 @@ const PlaceAutocomplete = ({ onPlaceSelect }: { onPlaceSelect: (place: google.ma
       const place = autocomplete.getPlace();
       
       if (place.geometry?.location) {
-        map.panTo(place.geometry.location); //
+        map.panTo(place.geometry.location); // Moves map to selection
         map.setZoom(15);
         onPlaceSelect(place);
       }
@@ -71,8 +93,8 @@ const PlaceAutocomplete = ({ onPlaceSelect }: { onPlaceSelect: (place: google.ma
     <div className="absolute top-4 left-4 z-[1000]">
       <input
         ref={inputRef}
-        placeholder="Search for your city or address..."
-        className="w-[300px] h-[45px] px-4 rounded-lg shadow-lg border-none outline-none text-gray-700"
+        placeholder="Search for Elampillai or Sivakasi branch..."
+        className="w-[350px] h-[50px] px-4 rounded-lg shadow-2xl border-2 border-blue-500 outline-none text-gray-800 font-bold"
         style={{ backgroundColor: 'white' }}
       />
     </div>
