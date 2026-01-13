@@ -98,11 +98,11 @@ export default function Footer() {
       
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-12">
         
-        {/* Company Info & Quick Links Grid */}
         <div className="grid lg:grid-cols-3 gap-12 mb-12">
+          {/* Column 1: Brand Info */}
           <div className="lg:col-span-1">
-            <h1 className="text-sm font-bold text-gray-900 mb-6 uppercase tracking-wider">Premium Box Manufacturing</h1>
-            <p className="text-sm text-gray-600 mb-2">Fulfilling your packaging needs with excellence</p>
+            <h3 className="text-sm font-bold text-gray-900 mb-6 uppercase tracking-wider">Premium Box Manufacturing</h3>
+            <p className="text-sm text-gray-600 mb-2 font-medium">Fulfilling your packaging needs with excellence</p>
             <p className="text-sm text-gray-600 mb-6">Trusted to deliver premium packaging solutions since 2010</p>
             
             <div className="flex flex-wrap items-center gap-6">
@@ -114,6 +114,7 @@ export default function Footer() {
             </div>
           </div>
 
+          {/* Column 2: Quick Links */}
           <div className="lg:col-span-1">
             <h3 className="text-sm font-bold text-gray-900 mb-6 uppercase tracking-wider">Packaging Solutions</h3>
             <ul className="space-y-2 text-sm text-gray-600">
@@ -126,21 +127,22 @@ export default function Footer() {
             </ul>
           </div>
 
+          {/* Column 3: Contacts */}
           <div className="lg:col-span-1">
              <h3 className="text-sm font-bold text-gray-900 mb-6 uppercase tracking-wider">Contact Details</h3>
              <div className="space-y-6">
                 {addresses.map((location, index) => (
                   <div key={index} className="space-y-2">
-                    <p className="font-bold text-gray-900 text-sm uppercase">{location.title}</p>
-                    <div className="flex items-start space-x-2 text-gray-600 text-sm">
+                    <p className="font-bold text-gray-900 text-sm uppercase tracking-tight">{location.title}</p>
+                    <div className="flex items-start space-x-2 text-sm text-gray-600">
                       <MapPin className="w-4 h-4 flex-shrink-0 mt-0.5" />
                       <span>{location.address}</span>
                     </div>
-                    <div className="flex items-center space-x-2 text-gray-600 text-sm">
+                    <div className="flex items-center space-x-2 text-sm text-gray-600">
                       <Phone className="w-4 h-4 flex-shrink-0" />
                       <span>{location.phone}</span>
                     </div>
-                    <div className="flex items-center space-x-2 text-gray-600 text-sm">
+                    <div className="flex items-center space-x-2 text-sm text-gray-600">
                       <Mail className="w-4 h-4 flex-shrink-0" />
                       <span className="truncate">{location.email}</span>
                     </div>
@@ -150,10 +152,10 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Payment and Shipping */}
-        <div className="grid lg:grid-cols-2 gap-8 border-t border-gray-200 pt-8">
+        {/* Payment & Shipping Section */}
+        <div className="grid lg:grid-cols-2 gap-8 border-t border-gray-200 pt-10">
           <div>
-            <h4 className="text-sm font-bold text-gray-900 mb-6 uppercase tracking-wider">Payment methods:</h4>
+            <h4 className="text-sm font-bold text-gray-900 mb-6 uppercase tracking-wider">Payment methods</h4>
             <div className="flex flex-wrap items-center gap-x-8 gap-y-4">
               {paymentMethods.map((method) => (
                 <div key={method.name} className="h-6 w-12 flex items-center justify-center">
@@ -164,7 +166,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-sm font-bold text-gray-900 mb-6 uppercase tracking-wider">We deliver with:</h4>
+            <h4 className="text-sm font-bold text-gray-900 mb-6 uppercase tracking-wider">We deliver with</h4>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
               {deliveryPartners.map((partner) => (
                 <div 
@@ -184,7 +186,7 @@ export default function Footer() {
         </div>
 
         <div className="text-center mt-12 pt-8 border-t border-gray-200">
-          <p className="text-sm text-gray-500">&copy; {new Date().getFullYear()} Premium Box Manufacturing. All rights reserved.</p>
+          <p className="text-sm text-gray-500 font-medium">&copy; {new Date().getFullYear()} Premium Box Manufacturing. All rights reserved.</p>
         </div>
       </div>
     </footer>
