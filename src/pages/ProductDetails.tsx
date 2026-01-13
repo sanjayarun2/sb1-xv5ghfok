@@ -20,16 +20,26 @@ interface Product {
 }
 
 export default function ProductDetails() {
-  const { id } = useParams<{ id: string }>();
+  // FIX 1: Change 'id' to 'slug' to match App.tsx
+  const { slug } = useParams<{ slug: string }>();
   const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState(true);
   const [activeIndex, setActiveIndex] = useState(0);
+
+  // FIX 2: Helper function to turn name into URL format
+  const slugify = (text: string) => 
+    text.toLowerCase().trim()
+      .replace(/[^\w\s-]/g, '')
+      .replace(/[\s_-]+/g, '-')
+      .replace(/^-+|-+$/g, '');
 
   useEffect(() => {
     const findProduct = () => {
       setLoading(true);
       const allProducts = Object.values(categoryProducts).flat();
-      const foundProduct = allProducts.find((p) => p.id === id);
+      
+      // FIX 3: Search using the slugified name instead of ID
+      const foundProduct = allProducts.find((p) => slugify(p.name) === slug);
       
       if (foundProduct) {
         setProduct(foundProduct);
@@ -38,7 +48,7 @@ export default function ProductDetails() {
     };
 
     findProduct();
-  }, [id]);
+  }, [slug]); // Depend on slug change
 
   if (loading) {
     return (
@@ -73,8 +83,8 @@ export default function ProductDetails() {
         title={`${product.name} | Saree Box Manufacturer`}
         description={product.description}
         keywords={`${product.name}, custom packaging, saree box wholesale, luxury saree boxes, premiumpacking.in`}
-        canonicalUrl={`https://premiumpacking.in/product/${product.id}`}
-        // FIX: Ensure path is absolute for SEO bots
+        // FIX 4: Use slug in canonical URL for SEO
+        canonicalUrl={`https://premiumpacking.in/product/${slugify(product.name)}`}
         image={product.image.startsWith('http') ? product.image : `https://premiumpacking.in${product.image}`}
       />
       
@@ -88,7 +98,6 @@ export default function ProductDetails() {
 
           <div className="bg-white rounded-lg shadow-lg overflow-hidden mb-8">
             <div className="p-6">
-              {/* Correct H1 usage for Product Page ranking */}
               <h1 className="text-3xl font-bold text-gray-900 mb-2">{product.name}</h1>
               <p className="text-lg text-gray-600 leading-relaxed">{product.description}</p>
               <div className="mt-4">
@@ -109,7 +118,7 @@ export default function ProductDetails() {
               onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
               className="product-carousel"
             >
-              {allImages.map((image, index) => (
+              {allImages.map((image) => (
                 <SwiperSlide key={image.id}>
                   <div className="aspect-[4/5] relative bg-gray-100">
                     <img
