@@ -1,4 +1,5 @@
-import { APIProvider, Map, AdvancedMarker, Pin } from '@vis.gl/react-google-maps';
+import React, { useEffect, useRef } from 'react';
+import { APIProvider, Map, AdvancedMarker, Pin, useMap } from '@vis.gl/react-google-maps';
 // This registers the search bar (place-picker) component
 import '@googlemaps/extended-component-library/place_picker.js';
 import '@googlemaps/extended-component-library/api_loader.js';
@@ -15,7 +16,6 @@ const StoreLocator = () => {
   const MAP_ID = "daa5ca8abf0bde4d70f436d4"; 
 
   // ENTER YOUR ACTUAL COORDINATES HERE
-  // Right-click your location on Google Maps to get these numbers.
   const locations = [
     { 
       id: 'shop', 
@@ -28,6 +28,28 @@ const StoreLocator = () => {
       pos: { lat: 11.6750, lng: 78.1550 } 
     }
   ];
+
+  // --- FIX: Logic to make the Auto-suggest work ---
+  const map = useMap();
+  const pickerRef = useRef<any>(null);
+
+  useEffect(() => {
+    const picker = pickerRef.current;
+    if (!picker || !map) return;
+
+    // This listens for when you click a suggestion in the search bar
+    const handlePlaceChange = () => {
+      const selectedPlace = picker.value;
+      if (selectedPlace && selectedPlace.location) {
+        map.panTo(selectedPlace.location);
+        map.setZoom(15);
+      }
+    };
+
+    picker.addEventListener('gmpx-placechange', handlePlaceChange);
+    return () => picker.removeEventListener('gmpx-placechange', handlePlaceChange);
+  }, [map]);
+  // ----------------------------------------------
 
   return (
     <div className="h-[500px] w-full rounded-xl overflow-hidden shadow-2xl border border-gray-200">
@@ -47,6 +69,7 @@ const StoreLocator = () => {
           {/* SEARCH BAR (Place Picker) */}
           <div slot="control-block-start-inline-start" className="p-4">
             <gmpx-place-picker 
+              ref={pickerRef} // Added reference for the fix
               placeholder="Search near premiumpacking.in" 
               style={{ 
                 width: '300px', 

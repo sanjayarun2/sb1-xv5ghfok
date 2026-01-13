@@ -1,8 +1,6 @@
-import React from 'react';
 import { MapPin, Phone, Mail, Award, Users, Factory, Truck } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
 import Breadcrumbs from '../components/Breadcrumbs';
-// FIX: Import the Map component
 import StoreLocator from '../components/MapLocator';
 
 export default function AboutUs() {
@@ -100,7 +98,6 @@ export default function AboutUs() {
               </div>
             </div>
 
-            {/* FIX: Map integrated at the bottom of the locations box */}
             <div className="mt-8 pt-8 border-t border-gray-200">
                <StoreLocator />
             </div>
