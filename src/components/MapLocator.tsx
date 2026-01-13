@@ -74,8 +74,8 @@ const StoreLocator = () => {
               style={{ 
                 width: '300px', 
                 height: '45px',
-                borderRadius: '8px',
-                boxShadow: '0 2px 6px rgba(0,0,0,0.3)' 
+                backgroundcolor: 'white',
+                display: 'block'
               }} 
             />
           </div>
