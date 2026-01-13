@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { AuthProvider } from './contexts/AuthContext';
 import Navbar from './components/Navbar';
@@ -78,6 +78,11 @@ export default function App() {
                   <Footer />
                 </>
               } />
+              
+              {/* FIX: Redirect empty /product back to home catalog */}
+              <Route path="/product" element={<Navigate to="/" replace />} />
+
+              {/* FIX: Use :slug for SEO friendly URLs */}
               <Route path="/product/:slug" element={
                 <>
                   <Navbar />
@@ -85,6 +90,7 @@ export default function App() {
                   <Footer />
                 </>
               } />
+
               <Route path="/process/:process" element={
                 <>
                   <Navbar />
