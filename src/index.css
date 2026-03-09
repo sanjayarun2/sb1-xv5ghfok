@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.product-carousel .swiper-button-next,
+.product-carousel .swiper-button-prev {
+  color: theme('colors.blue.600');
+  background-color: theme('colors.white');
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.product-carousel .swiper-button-next:after,
+.product-carousel .swiper-button-prev:after {
+  font-size: 20px;
+}
+
+.product-carousel .swiper-pagination-bullet {
+  background: theme('colors.blue.600');
+}
+
+.product-carousel .swiper-pagination-bullet-active {
+  background: theme('colors.blue.600');
+}
