@@ -98,7 +98,7 @@ function LegacyArticle({ article }: { article: (typeof legacyArticles)[string] }
           <div className="aspect-w-16 aspect-h-9 mb-8 rounded-xl overflow-hidden">
             <img
               src={article.image}
-              alt={article.title}
+              alt={`${article.title} - Premium Pack manufacturing process`}
               className="w-full h-full object-cover"
               loading="lazy"
               width={1200}
@@ -190,15 +190,30 @@ function ClusterArticle({ article }: { article: ProcessArticleData }) {
           {/* Hero Image */}
           {article.image && (
             <figure className="mb-10">
-              <img
-                src={article.image}
-                alt={article.imageAlt || article.title}
-                className="w-full max-w-lg mx-auto rounded-xl border border-gray-100 shadow-sm"
-                width={800}
-                height={600}
-                loading="lazy"
-                decoding="async"
-              />
+              {article.image.startsWith('/process/') && (article.image.endsWith('.png') || article.image.endsWith('.jpg')) ? (
+                <picture>
+                  <source srcSet={article.image.replace(/\.(png|jpg)$/i, '.webp')} type="image/webp" />
+                  <img
+                    src={article.image}
+                    alt={article.imageAlt || article.title}
+                    className="w-full max-w-lg mx-auto rounded-xl border border-gray-100 shadow-sm"
+                    width={800}
+                    height={600}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </picture>
+              ) : (
+                <img
+                  src={article.image}
+                  alt={article.imageAlt || article.title}
+                  className="w-full max-w-lg mx-auto rounded-xl border border-gray-100 shadow-sm"
+                  width={800}
+                  height={600}
+                  loading="lazy"
+                  decoding="async"
+                />
+              )}
               {article.imageAlt && (
                 <figcaption className="text-center text-sm text-gray-400 mt-3">
                   {article.imageAlt}

@@ -44,7 +44,7 @@ export default function ProductSlider({ products }: ProductSliderProps) {
           >
             <img 
               src={product.image} 
-              alt={product.name}
+              alt={`${product.name} - Saree packaging solution`}
               className="w-full h-48 object-cover"
               loading="lazy"
               width={320}

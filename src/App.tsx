@@ -18,6 +18,12 @@ import ProductDetails from './pages/ProductDetails';
 import ProcessArticle from './pages/ProcessArticle';
 import SareeBoxManufacturing from './pages/SareeBoxManufacturing';
 import AboutUs from './pages/AboutUs';
+import CityLanding from './pages/CityLanding';
+import ExportSareeBoxes from './pages/ExportSareeBoxes';
+import SareeBoxGallery from './pages/SareeBoxGallery';
+import CaseStudyIndex from './pages/CaseStudyIndex';
+import CaseStudy from './pages/CaseStudy';
+import TrustStrip from './components/TrustStrip';
 import WhatsAppButton from './components/whatsappbutton'; 
 
 const AdminLogin = lazy(() => import('./pages/AdminLogin'));
@@ -105,6 +111,7 @@ export default function App() {
                     <TrustedBrands />
                     <Testimonials />
                   </div>
+                  <TrustStrip variant="both" />
                   <Footer />
                 </>
               } />
@@ -149,6 +156,52 @@ export default function App() {
                   <Footer />
                 </>
               } />
+
+              <Route path="/gallery" element={
+                <>
+                  <Navbar />
+                  <SareeBoxGallery />
+                  <Footer />
+                </>
+              } />
+
+              <Route path="/case-study" element={
+                <>
+                  <Navbar />
+                  <CaseStudyIndex />
+                  <Footer />
+                </>
+              } />
+
+              <Route path="/case-study/:slug" element={
+                <>
+                  <Navbar />
+                  <CaseStudy />
+                  <Footer />
+                </>
+              } />
+
+              <Route
+                path="/:citySlug"
+                element={
+                  <>
+                    <Navbar />
+                    <CityLanding />
+                    <Footer />
+                  </>
+                }
+              />
+
+              <Route
+                path="/export-saree-boxes"
+                element={
+                  <>
+                    <Navbar />
+                    <ExportSareeBoxes />
+                    <Footer />
+                  </>
+                }
+              />
             </Routes>
             
             <WhatsAppButton /> 

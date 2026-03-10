@@ -34,7 +34,7 @@ export default function AboutUs() {
             <div className="relative h-96 rounded-lg overflow-hidden shadow-xl">
               <img
                 src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1200"
-                alt="Our Factory"
+                alt="Our Sivakasi manufacturing factory facility"
                 className="w-full h-full object-cover"
                 loading="lazy"
                 width={1200}

@@ -62,14 +62,18 @@ export default function Hero() {
                   </div>
                   
                   <div className="relative px-4">
-                    <img 
-                      src="/c5694789c65c7c22b7f6092f3a355c35-removebg-preview.png" 
-                      alt="Premium Saree Box" 
-                      className="w-full h-auto drop-shadow-xl"
-                      width={800}
-                      height={600}
-                      decoding="async"
-                    />
+                    <picture>
+                      <source srcSet="/c5694789c65c7c22b7f6092f3a355c35-removebg-preview.webp" type="image/webp" />
+                      <img 
+                        src="/c5694789c65c7c22b7f6092f3a355c35-removebg-preview.png" 
+                        alt="Premium Saree Box with custom logo placeholder for wholesale packaging"
+                        className="w-full h-auto drop-shadow-xl"
+                        width={800}
+                        height={600}
+                        decoding="async"
+                        fetchPriority="high"
+                      />
+                    </picture>
                     
                     <div className="absolute top-[35%] left-[48%] -translate-x-1/2 -translate-y-1/2 border-2 border-blue-500 border-dashed px-3 py-1 bg-white/70 backdrop-blur-[2px] rounded rotate-[-15deg]">
                        <p className="text-blue-600 font-black text-[10px] uppercase tracking-tighter">Your Logo Here</p>

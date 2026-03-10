@@ -31,7 +31,7 @@ export default function TrustedBrands() {
               <div className="relative w-full h-24 mb-4">
                 <img
                   src={brand.logo_url}
-                  alt={`${brand.name} - Luxury Saree Packaging Partner`}
+                  alt={`${brand.name} - Trusted luxury saree packaging partner`}
                   className="w-full h-full object-contain filter grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
                   loading="lazy"
                   width={150}

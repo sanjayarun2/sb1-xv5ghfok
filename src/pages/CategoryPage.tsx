@@ -47,8 +47,11 @@ export default function CategoryPage() {
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src={product.image} 
-                    alt={product.name}
+                    alt={`${product.name} - Saree packaging product`}
                     className="w-full h-48 object-cover"
+                    width={640}
+                    height={360}
+                    loading="lazy"
                   />
                 </div>
                 <div className="p-6">

@@ -62,6 +62,18 @@ export default function PillarSection() {
             )}
           </button>
 
+          <p className="mt-6 text-sm text-gray-500 text-center">
+            We already ship saree boxes pan-India to major textile hubs. If you are based in cities like{' '}
+            <Link to="/saree-box-manufacturer-in-surat" className="text-blue-600 hover:text-blue-700 font-semibold">
+              Surat
+            </Link>{' '}
+            or{' '}
+            <Link to="/saree-box-manufacturer-in-chennai" className="text-blue-600 hover:text-blue-700 font-semibold">
+              Chennai
+            </Link>
+            , you can explore location-specific details before placing bulk orders.
+          </p>
+
           <Link
             to="/process/saree-box-manufacturing"
             className="mt-4 flex items-center gap-2 text-gray-500 hover:text-blue-600 font-medium transition-colors mx-auto text-sm justify-center"

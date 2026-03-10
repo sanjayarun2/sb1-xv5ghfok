@@ -11,8 +11,11 @@ export default function ProjectStats() {
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none">
         <img 
           src="https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_blank_without_borders.svg" 
-          alt="World Map Background"
+          alt="World map background for global saree box delivery statistics"
           className="w-full h-auto opacity-[0.05] grayscale scale-110 lg:scale-100"
+          width={1200}
+          height={600}
+          loading="lazy"
         />
       </div>
 

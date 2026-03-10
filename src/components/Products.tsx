@@ -92,7 +92,7 @@ export default function Products() {
                       <div className="relative pt-[80%] bg-gray-200">
                         <img 
                           src={product.image}
-                          alt={`${product.name} - Custom Saree Box Manufacturer`}
+                          alt={`${product.name} - Custom saree box manufacturer Premium Pack`}
                           className="absolute inset-0 w-full h-full object-cover"
                           loading="lazy"
                           width={800}

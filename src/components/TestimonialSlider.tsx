@@ -45,7 +45,7 @@ export default function TestimonialSlider({ testimonials }: TestimonialSliderPro
               <img
                 className="h-12 w-12 rounded-full object-cover"
                 src={testimonial.avatar}
-                alt={testimonial.name}
+                alt={`Testimonial profile photo of ${testimonial.name}`}
                 loading="lazy"
                 width={48}
                 height={48}

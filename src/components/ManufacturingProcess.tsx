@@ -43,9 +43,11 @@ export default function ManufacturingProcess() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-black/20 z-10" />
                 <img
                   src={process.image}
-                  alt={process.title}
+                  alt={`${process.title} manufacturing process - Premium Pack Sivakasi`}
                   className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
                   loading={index === 0 ? "eager" : "lazy"}
+                  width={800}
+                  height={600}
                 />
                 <div className="absolute inset-0 z-20 p-4 flex flex-col justify-end text-white">
                   <h3 className="text-xl font-bold mb-2">{process.title}</h3>

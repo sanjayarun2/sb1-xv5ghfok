@@ -99,7 +99,7 @@ export default function Footer() {
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-12">
         
         {/* Main Sections Grid */}
-        <div className="grid lg:grid-cols-3 gap-12 mb-12">
+        <div className="grid lg:grid-cols-4 gap-12 mb-12">
           {/* Column 1: Brand Info */}
           <div className="lg:col-span-1">
             <h3 className="text-sm font-bold text-gray-900 mb-6 uppercase tracking-wider">Premium Box Manufacturing</h3>
@@ -109,7 +109,7 @@ export default function Footer() {
             <div className="flex flex-wrap items-center gap-6">
               {socialLinks.map((social) => (
                 <a key={social.name} href={social.url} target="_blank" rel="noopener noreferrer" className="transition-transform hover:scale-110">
-                  <img src={social.icon} alt={social.name} className="w-5 h-5 object-contain" />
+                  <img src={social.icon} alt={`Follow us on ${social.name}`} className="w-5 h-5 object-contain" width={20} height={20} loading="lazy" />
                 </a>
               ))}
             </div>
@@ -125,6 +125,8 @@ export default function Footer() {
               <li><Link to="/product/luxury-saree-paper-box" className="hover:text-blue-600 transition-colors">Luxury Saree Paper Box</Link></li>
               <li><Link to="/product/custom-designed-saree-box" className="hover:text-blue-600 transition-colors">Custom designed saree box</Link></li>
               <li><Link to="/product/saree-storage-cartons" className="hover:text-blue-600 transition-colors">Saree Storage Cartons</Link></li>
+              <li className="pt-2 border-t border-gray-100 mt-2"><Link to="/gallery" className="hover:text-blue-600 transition-colors font-medium">Saree Box Gallery</Link></li>
+              <li><Link to="/case-study" className="hover:text-blue-600 transition-colors font-medium">Case Studies</Link></li>
             </ul>
           </div>
 
@@ -153,6 +155,22 @@ export default function Footer() {
                 ))}
              </div>
           </div>
+          
+          {/* Column 4: Service Areas */}
+          <div className="lg:col-span-1">
+            <h3 className="text-sm font-bold text-gray-900 mb-6 uppercase tracking-wider">Service Areas</h3>
+            <ul className="space-y-2 text-sm text-gray-600">
+              <li><Link to="/saree-box-manufacturer-in-surat" className="hover:text-blue-600 transition-colors">Surat saree box supplier</Link></li>
+              <li><Link to="/saree-box-manufacturer-in-chennai" className="hover:text-blue-600 transition-colors">Chennai &amp; Kancheepuram</Link></li>
+              <li><Link to="/saree-box-manufacturer-in-mumbai" className="hover:text-blue-600 transition-colors">Mumbai &amp; export hubs</Link></li>
+              <li><Link to="/saree-box-manufacturer-in-bangalore" className="hover:text-blue-600 transition-colors">Bangalore boutiques</Link></li>
+              <li><Link to="/saree-box-manufacturer-in-ahmedabad" className="hover:text-blue-600 transition-colors">Ahmedabad wholesalers</Link></li>
+              <li><Link to="/saree-box-manufacturer-in-hyderabad" className="hover:text-blue-600 transition-colors">Hyderabad saree markets</Link></li>
+              <li><Link to="/saree-box-manufacturer-in-kolkata" className="hover:text-blue-600 transition-colors">Kolkata saree hubs</Link></li>
+              <li><Link to="/saree-box-manufacturer-in-delhi" className="hover:text-blue-600 transition-colors">Delhi &amp; NCR</Link></li>
+              <li><Link to="/export-saree-boxes" className="hover:text-blue-600 transition-colors">Export saree boxes</Link></li>
+            </ul>
+          </div>
         </div>
 
         {/* Payment & Shipping Section */}
@@ -178,9 +196,11 @@ export default function Footer() {
                 >
                   <img 
                     src={partner.logo} 
-                    alt={partner.name} 
+                    alt={`${partner.name} delivery partner`} 
                     className="max-h-full max-w-full object-contain" 
-                    loading="lazy" 
+                    loading="lazy"
+                    width={120}
+                    height={48}
                   />
                 </div>
               ))}

@@ -161,15 +161,18 @@ export default function SareeBoxManufacturing() {
             </p>
 
             <figure className="my-8">
-              <img
-                src="/process/boxsize.png"
-                alt="Saree box dimensions — 13 x 8 x 1.5 inches"
-                className="w-full max-w-md mx-auto rounded-xl border border-gray-100 shadow-sm"
-                width={800}
-                height={450}
-                loading="lazy"
-                decoding="async"
-              />
+              <picture>
+                <source srcSet="/process/boxsize.webp" type="image/webp" />
+                <img
+                  src="/process/boxsize.png"
+                  alt="Saree box dimensions diagram — 13 x 8 x 1.5 inches"
+                  className="w-full max-w-md mx-auto rounded-xl border border-gray-100 shadow-sm"
+                  width={800}
+                  height={450}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
               <figcaption className="text-center text-sm text-gray-400 mt-3">
                 Standard Book Fold saree box dimensions: 13″ × 8″ × 1.5″
               </figcaption>
@@ -193,15 +196,18 @@ export default function SareeBoxManufacturing() {
             </p>
 
             <figure className="my-8">
-              <img
-                src="/process/paperboard-sheet.png"
-                alt="Standard paperboard sheets used for saree box manufacturing"
-                className="w-full max-w-lg mx-auto rounded-xl border border-gray-100 shadow-sm"
-                width={800}
-                height={600}
-                loading="lazy"
-                decoding="async"
-              />
+              <picture>
+                <source srcSet="/process/paperboard-sheet.webp" type="image/webp" />
+                <img
+                  src="/process/paperboard-sheet.png"
+                  alt="Standard paperboard sheets used for saree box manufacturing"
+                  className="w-full max-w-lg mx-auto rounded-xl border border-gray-100 shadow-sm"
+                  width={800}
+                  height={600}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
               <figcaption className="text-center text-sm text-gray-400 mt-3">
                 Raw paperboard sheets — white back and grey back variants
               </figcaption>
@@ -289,15 +295,18 @@ export default function SareeBoxManufacturing() {
             </ul>
 
             <figure className="my-8">
-              <img
-                src="/process/die-board.jpg"
-                alt="Die board from our factory with cutting blades and crease rules for saree box"
-                className="w-full max-w-lg mx-auto rounded-xl border border-gray-100 shadow-sm"
-                width={800}
-                height={1000}
-                loading="lazy"
-                decoding="async"
-              />
+              <picture>
+                <source srcSet="/process/die-board.webp" type="image/webp" />
+                <img
+                  src="/process/die-board.jpg"
+                  alt="Die board from our factory with cutting blades and crease rules for saree box"
+                  className="w-full max-w-lg mx-auto rounded-xl border border-gray-100 shadow-sm"
+                  width={800}
+                  height={1000}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
               <figcaption className="text-center text-sm text-gray-400 mt-3">
                 Real die board from our Sivakasi factory — note the cutting blades (edges) and crease rules
                 (inner lines)
@@ -325,29 +334,35 @@ export default function SareeBoxManufacturing() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 my-8">
               <figure>
-                <img
-                  src="/process/scoring-setup.png"
-                  alt="Worker placing laminated paperboard on die-cutting machine"
-                  className="w-full rounded-xl border border-gray-100 shadow-sm"
-                  width={600}
-                  height={900}
-                  loading="lazy"
-                  decoding="async"
-                />
+                <picture>
+                  <source srcSet="/process/scoring-setup.webp" type="image/webp" />
+                  <img
+                    src="/process/scoring-setup.png"
+                    alt="Worker placing laminated paperboard on die-cutting machine"
+                    className="w-full rounded-xl border border-gray-100 shadow-sm"
+                    width={600}
+                    height={900}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </picture>
                 <figcaption className="text-center text-sm text-gray-400 mt-3">
                   Placing the laminated sheet on the machine
                 </figcaption>
               </figure>
               <figure>
-                <img
-                  src="/process/scoring-machine.png"
-                  alt="Die cutting machine in action punching saree box shapes"
-                  className="w-full rounded-xl border border-gray-100 shadow-sm"
-                  width={600}
-                  height={900}
-                  loading="lazy"
-                  decoding="async"
-                />
+                <picture>
+                  <source srcSet="/process/scoring-machine.webp" type="image/webp" />
+                  <img
+                    src="/process/scoring-machine.png"
+                    alt="Die cutting machine in action punching saree box shapes"
+                    className="w-full rounded-xl border border-gray-100 shadow-sm"
+                    width={600}
+                    height={900}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </picture>
                 <figcaption className="text-center text-sm text-gray-400 mt-3">
                   Die-cutting machine in action
                 </figcaption>
@@ -360,15 +375,18 @@ export default function SareeBoxManufacturing() {
             </p>
 
             <figure className="my-8">
-              <img
-                src="/process/top-bottom-lid.png"
-                alt="Saree box top lid and bottom lid showing size difference"
-                className="w-full max-w-md mx-auto rounded-xl border border-gray-100 shadow-sm"
-                width={800}
-                height={450}
-                loading="lazy"
-                decoding="async"
-              />
+              <picture>
+                <source srcSet="/process/top-bottom-lid.webp" type="image/webp" />
+                <img
+                  src="/process/top-bottom-lid.png"
+                  alt="Saree box top lid and bottom lid showing size difference"
+                  className="w-full max-w-md mx-auto rounded-xl border border-gray-100 shadow-sm"
+                  width={800}
+                  height={450}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
               <figcaption className="text-center text-sm text-gray-400 mt-3">
                 Top Lid (larger) and Bottom Lid (slightly smaller) for a proper fit
               </figcaption>
