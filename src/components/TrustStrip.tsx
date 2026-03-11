@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { MapPin, Globe } from 'lucide-react';
 
 const regions = [
+  { label: 'Salem', to: '/about' },
   { label: 'Surat', to: '/saree-box-manufacturer-in-surat' },
   { label: 'Chennai', to: '/saree-box-manufacturer-in-chennai' },
   { label: 'Mumbai', to: '/saree-box-manufacturer-in-mumbai' },
@@ -60,6 +61,18 @@ export default function TrustStrip({ variant = 'both' }: TrustStripProps) {
             <span className="text-gray-300">&middot;</span>
             <Link to="/export-saree-boxes" className="text-blue-600 hover:underline font-medium">
               Malaysia
+            </Link>
+            <span className="text-gray-300">&middot;</span>
+            <Link to="/export-saree-boxes" className="text-blue-600 hover:underline font-medium">
+              Canada
+            </Link>
+            <span className="text-gray-300">&middot;</span>
+            <Link to="/export-saree-boxes" className="text-blue-600 hover:underline font-medium">
+              Australia
+            </Link>
+            <span className="text-gray-300">&middot;</span>
+            <Link to="/export-saree-boxes" className="text-blue-600 hover:underline font-medium">
+              Germany
             </Link>
           </div>
         )}

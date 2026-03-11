@@ -22,17 +22,17 @@ export default function TrustedBrands() {
         </div>
         
         {/* Logo Grid */}
-        <div className="grid grid-cols-2 gap-10 md:grid-cols-3 lg:grid-cols-6 items-center">
+        <div className="grid grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-6 items-center">
           {BRANDS_DATA.map((brand) => (
             <div 
               key={brand.id} 
               className="group flex flex-col items-center justify-center transition-all duration-500 hover:-translate-y-2"
             >
-              <div className="relative w-full h-24 mb-4">
+              <div className="relative w-full h-16 sm:h-20 mb-4 flex items-center justify-center">
                 <img
                   src={brand.logo_url}
                   alt={`${brand.name} - Trusted luxury saree packaging partner`}
-                  className="w-full h-full object-contain filter grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
+                  className="max-h-full max-w-[120px] w-auto object-contain filter grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
                   loading="lazy"
                   width={150}
                   height={96}
