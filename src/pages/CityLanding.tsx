@@ -2,6 +2,9 @@ import { useParams, Link } from 'react-router-dom';
 import SEOHead from '../components/SEOHead';
 import Breadcrumbs from '../components/Breadcrumbs';
 import TrustStrip from '../components/TrustStrip';
+import FAQBlock from '../components/FAQBlock';
+import HowToOrder from '../components/HowToOrder';
+import FactoryStandards from '../components/FactoryStandards';
 import { cityPages } from '../data/cityPages';
 import { categoryProducts } from '../data/products';
 
@@ -161,6 +164,17 @@ export default function CityLanding() {
               ))}
             </div>
           </section>
+
+          <HowToOrder variant="compact" />
+
+          <FactoryStandards />
+
+          {city.faqs.length > 0 && (
+            <FAQBlock
+              title={`Saree box FAQs for ${city.cityName}`}
+              items={city.faqs}
+            />
+          )}
 
           <section className="border-t border-gray-100 pt-8 mt-4">
             <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-3">

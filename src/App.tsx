@@ -23,6 +23,7 @@ import ExportSareeBoxes from './pages/ExportSareeBoxes';
 import SareeBoxGallery from './pages/SareeBoxGallery';
 import CaseStudyIndex from './pages/CaseStudyIndex';
 import CaseStudy from './pages/CaseStudy';
+import WhySareeBoxOnly from './pages/WhySareeBoxOnly';
 import TrustStrip from './components/TrustStrip';
 import ScrollToTop from './components/ScrollToTop';
 import WhatsAppButton from './components/whatsappbutton'; 
@@ -179,6 +180,14 @@ export default function App() {
                 <>
                   <Navbar />
                   <CaseStudy />
+                  <Footer />
+                </>
+              } />
+
+              <Route path="/why-saree-box-only" element={
+                <>
+                  <Navbar />
+                  <WhySareeBoxOnly />
                   <Footer />
                 </>
               } />

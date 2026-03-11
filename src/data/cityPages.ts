@@ -1,3 +1,8 @@
+export interface CityFAQ {
+  question: string;
+  answer: string;
+}
+
 export interface CityPage {
   slug: string;
   cityName: string;
@@ -8,6 +13,7 @@ export interface CityPage {
   heroIntro: string;
   deliveryInfo: string;
   localFacts: string[];
+  faqs: CityFAQ[];
 }
 
 export const cityPages: CityPage[] = [
@@ -28,6 +34,11 @@ export const cityPages: CityPage[] = [
       'Experience with high-volume saree orders from Ring Road and Varachha Road markets.',
       'Durable duplex board and strong lamination to withstand multiple handling cycles in wholesale godowns.',
     ],
+    faqs: [
+      { question: 'What is the minimum order for saree boxes from Surat?', answer: 'We accept orders starting from 500 boxes. For custom printing or special lamination, a 1,000-box minimum applies. Trial orders of 200–300 boxes are available at slightly adjusted rates.' },
+      { question: 'How long does delivery take to Surat?', answer: 'Standard delivery to Surat takes 4–7 working days from dispatch. We ship via Bluedart and Delhivery with tracking provided on all orders.' },
+      { question: 'Can you match my existing box design exactly?', answer: 'Yes. Send us a sample or clear photograph and we will replicate the size, print, and lamination. We maintain colour consistency across repeat batches.' },
+    ],
   },
   {
     slug: 'saree-box-manufacturer-in-chennai',
@@ -45,6 +56,11 @@ export const cityPages: CityPage[] = [
     localFacts: [
       'Suitable for T Nagar, Mylapore and Kancheepuram silk showrooms.',
       'Options for velvet / soft-touch lamination for high-end bridal collections.',
+    ],
+    faqs: [
+      { question: 'Do you supply saree boxes for Kancheepuram silk sarees?', answer: 'Yes. We manufacture boxes specifically sized for Kancheepuram silk sarees which are typically folded wider. Velvet and soft-touch lamination are popular choices for bridal silk collections.' },
+      { question: 'Can you print my showroom logo on the saree box?', answer: 'Absolutely. We offer full-colour offset printing with your logo, tagline, and brand colours. Foil stamping is also available for a premium look.' },
+      { question: 'What lamination is best for Chennai climate?', answer: 'We recommend BOPP gloss or matte lamination which provides moisture resistance suitable for Chennai humidity. For premium collections, velvet lamination adds both protection and a luxury feel.' },
     ],
   },
   {
@@ -64,6 +80,11 @@ export const cityPages: CityPage[] = [
       'Suitable for Burrabazar and major saree trading hubs.',
       'Printed saree boxes with regional language branding available on request.',
     ],
+    faqs: [
+      { question: 'Can you print Bengali text on saree boxes?', answer: 'Yes. We support custom printing in Bengali and other regional languages. Share the artwork or text and we will incorporate it into the box design.' },
+      { question: 'What board thickness is best for Kolkata wholesale?', answer: 'For wholesale bulk handling, we recommend 350 GSM duplex board with BOPP lamination. This provides good stacking strength and durability for godown storage.' },
+      { question: 'Do you ship to Kolkata regularly?', answer: 'Yes, we have established logistics routes to Kolkata with optimised packing for long-distance road transport. Typical delivery is 5–8 working days.' },
+    ],
   },
   {
     slug: 'saree-box-manufacturer-in-mumbai',
@@ -81,6 +102,11 @@ export const cityPages: CityPage[] = [
     localFacts: [
       'Supports Andheri, Dadar, Bhuleshwar and other key retail hubs.',
       'Experience with brand guidelines and colour consistency for national retail chains.',
+    ],
+    faqs: [
+      { question: 'Can you supply saree boxes for export orders shipping from Mumbai port?', answer: 'Yes. We regularly coordinate with exporters shipping from Mumbai. Boxes are packed in export-grade corrugated cartons with proper markings and strapping for container loading.' },
+      { question: 'Do you offer sample boxes before bulk orders?', answer: 'Yes. We can produce a small trial batch of 100–200 boxes so you can check size, print quality, and lamination before confirming a larger order.' },
+      { question: 'What is the typical turnaround time for Mumbai orders?', answer: 'Standard orders ship within 5–10 working days from confirmation. Delivery to Mumbai typically takes 3–5 additional days depending on pin code.' },
     ],
   },
   {
@@ -100,6 +126,11 @@ export const cityPages: CityPage[] = [
       'Ideal for Indiranagar, Jayanagar and commercial street boutiques.',
       'Soft-touch and matte lamination combinations that photograph well for online listings.',
     ],
+    faqs: [
+      { question: 'What finish works best for online saree brand photography?', answer: 'Matte and soft-touch lamination produce minimal glare and photograph best for product listings. We recommend these for brands selling primarily online.' },
+      { question: 'Do you supply small batches for boutique collections?', answer: 'Yes. We understand boutiques work with smaller runs. Our minimum order is 500 boxes, and we maintain consistent quality even on smaller batches.' },
+      { question: 'Can you add foil stamping to the logo?', answer: 'Yes. Gold, silver, and rose gold foil stamping is available. It works particularly well on matte or velvet laminated surfaces for a premium look.' },
+    ],
   },
   {
     slug: 'saree-box-manufacturer-in-ahmedabad',
@@ -117,6 +148,11 @@ export const cityPages: CityPage[] = [
     localFacts: [
       'Grey-back and white-back board options based on budget and visibility needs.',
       'Carton printing available for warehouse identification and export marking.',
+    ],
+    faqs: [
+      { question: 'What is the difference between grey-back and white-back board?', answer: 'Grey-back board is more economical and suitable when the inside of the box is not visible. White-back board gives a cleaner look inside and is preferred for premium or gift saree boxes.' },
+      { question: 'Can you supply both decorative boxes and plain storage cartons?', answer: 'Yes. We manufacture printed saree boxes for retail and heavy-duty corrugated cartons for warehouse storage. Both can be ordered together or separately.' },
+      { question: 'Do you handle truckload shipments to Ahmedabad?', answer: 'Yes. For large orders, we arrange full truckload shipments with optimised carton stacking to reduce per-box shipping cost.' },
     ],
   },
   {
@@ -136,6 +172,11 @@ export const cityPages: CityPage[] = [
       'Suitable for Ameerpet, Charminar and other busy textile zones.',
       'Options for met-pet and velvet finishes for festive collections.',
     ],
+    faqs: [
+      { question: 'What finish is best for pattu saree boxes?', answer: 'Velvet or soft-touch lamination with gold foil logo stamping is the most popular combination for pattu and bridal saree boxes. It conveys luxury and protects the surface.' },
+      { question: 'Can you handle festive season rush orders?', answer: 'Yes. We plan production capacity ahead of Dussehra, Diwali, and wedding seasons. For large festival orders, we recommend placing requirements 3–4 weeks in advance.' },
+      { question: 'Do you supply to other cities in Telangana?', answer: 'Yes. While Hyderabad is our primary delivery point, we also ship to Warangal, Karimnagar, and other Telangana cities through the same logistics routes.' },
+    ],
   },
   {
     slug: 'saree-box-manufacturer-in-delhi',
@@ -153,6 +194,11 @@ export const cityPages: CityPage[] = [
     localFacts: [
       'Suitable for Chandni Chowk, Lajpat Nagar, Karol Bagh and NCR outlets.',
       'High-contrast designs and lamination suitable for brightly lit showrooms.',
+    ],
+    faqs: [
+      { question: 'Do you deliver to Chandni Chowk and Karol Bagh?', answer: 'Yes. We deliver to all Delhi pin codes including Chandni Chowk, Karol Bagh, Lajpat Nagar, and NCR areas via Bluedart and Delhivery with door-to-door tracking.' },
+      { question: 'What box size suits exhibition and trade show sarees?', answer: 'For exhibitions, we recommend slightly larger boxes (10x15x2 inches) with high-contrast printing and glossy lamination for maximum visual impact under bright lights.' },
+      { question: 'Can you supply saree boxes for wedding exhibitions?', answer: 'Yes. Many of our Delhi clients order special batches for wedding exhibitions and seasonal fairs. We can produce custom designs with fast turnaround for event deadlines.' },
     ],
   },
 ];

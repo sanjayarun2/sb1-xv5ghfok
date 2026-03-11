@@ -1,6 +1,9 @@
 import SEOHead from '../components/SEOHead';
 import Breadcrumbs from '../components/Breadcrumbs';
 import TrustStrip from '../components/TrustStrip';
+import FAQBlock from '../components/FAQBlock';
+import HowToOrder from '../components/HowToOrder';
+import FactoryStandards from '../components/FactoryStandards';
 import { exportPage } from '../data/exportPage';
 
 const domain = 'https://premiumpacking.in';
@@ -129,6 +132,21 @@ export default function ExportSareeBoxes() {
               ))}
             </div>
           </section>
+
+          <HowToOrder variant="compact" />
+
+          <FactoryStandards showExportDoc />
+
+          <FAQBlock
+            title="Export saree box FAQs"
+            items={[
+              { question: 'What is the minimum order for export saree boxes?', answer: 'For export orders, our minimum is 1,000 boxes per design. This allows us to set up printing and lamination efficiently while keeping per-box costs competitive for international shipments.' },
+              { question: 'Do you provide HS code and export documentation?', answer: 'Yes. We include HS code, country of origin, packing list, and handling instructions on outer cartons. Our team coordinates with your freight forwarder for any specific documentation requirements.' },
+              { question: 'How do you pack boxes for sea freight?', answer: 'Saree boxes are packed in 5-ply corrugated cartons, strapped, and stretch-wrapped. For container shipments, cartons are palletised to prevent movement. We follow standard export packing norms to minimise transit damage.' },
+              { question: 'Can you ship samples internationally before a bulk order?', answer: 'Yes. We can courier sample boxes to any country via DHL or FedEx. Shipping cost for samples is borne by the buyer, and it typically takes 5–7 working days for delivery.' },
+              { question: 'Do you support custom box sizes for international brands?', answer: 'Absolutely. We manufacture custom dies for any box size. Share the dimensions and folding style of your saree, and we will recommend the optimal box size for your specific saree type.' },
+            ]}
+          />
 
           <section className="border-t border-gray-100 pt-8">
             <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-3">
