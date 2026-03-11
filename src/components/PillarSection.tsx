@@ -19,15 +19,13 @@ export default function PillarSection() {
   return (
     <section className="py-16 bg-gray-50">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-        <header className="mb-10 text-center md:text-left">
-          <div className="max-w-3xl mx-auto md:mx-0">
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight mb-2">
-              {content.title}
-            </h2>
-            <p className="text-base sm:text-lg text-blue-600 font-semibold">
-              {content.subtitle}
-            </p>
-          </div>
+        <header className="mb-12 text-center">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">
+            {content.title}
+          </h2>
+          <p className="mt-4 text-lg text-gray-500 max-w-2xl mx-auto">
+            {content.subtitle}
+          </p>
         </header>
 
         <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 md:p-10">
@@ -53,7 +51,7 @@ export default function PillarSection() {
 
           <button
             onClick={() => setIsExpanded(!isExpanded)}
-            className="mt-10 flex items-center gap-2 text-blue-600 font-bold hover:text-blue-700 transition-colors mx-auto md:mx-0 px-8 py-3 rounded-full border border-blue-100 hover:bg-blue-50 shadow-sm"
+          className="mt-10 flex items-center gap-2 text-blue-600 font-bold hover:text-blue-700 transition-colors mx-auto px-8 py-3 rounded-full border border-blue-100 hover:bg-blue-50 shadow-sm"
           >
             {isExpanded ? (
               <>Show Less <ChevronUp className="h-5 w-5" /></>
@@ -62,7 +60,7 @@ export default function PillarSection() {
             )}
           </button>
 
-          <p className="mt-6 text-sm text-gray-500 text-center md:text-left">
+        <p className="mt-6 text-sm text-gray-500 text-center">
             We already ship saree boxes pan-India to major textile hubs. If you are based in cities like{' '}
             <Link to="/saree-box-manufacturer-in-surat" className="text-blue-600 hover:text-blue-700 font-semibold">
               Surat
@@ -76,7 +74,7 @@ export default function PillarSection() {
 
           <Link
             to="/process/saree-box-manufacturing"
-            className="mt-4 flex items-center gap-2 text-gray-500 hover:text-blue-600 font-medium transition-colors mx-auto md:mx-0 text-sm justify-center md:justify-start"
+          className="mt-4 flex items-center gap-2 text-gray-500 hover:text-blue-600 font-medium transition-colors mx-auto text-sm justify-center"
           >
             Read Our Full Manufacturing Guide <ArrowRight className="h-4 w-4" />
           </Link>
