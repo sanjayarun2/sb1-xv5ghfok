@@ -31,15 +31,23 @@ export default function HowToOrder({ variant = 'default' }: HowToOrderProps) {
   const isCompact = variant === 'compact';
 
   return (
-    <section className={`${isCompact ? 'py-8' : 'py-10'}`}>
-      <h2 className={`${isCompact ? 'text-lg sm:text-xl' : 'text-xl sm:text-2xl'} font-bold text-gray-900 mb-2`}>
+    <section className={isCompact ? 'py-8' : 'py-10'}>
+      <h2
+        className={`${
+          isCompact ? 'text-xl sm:text-2xl' : 'text-2xl sm:text-3xl'
+        } font-bold text-gray-900 tracking-tight mb-3`}
+      >
         How to place an order
       </h2>
-      <p className="text-sm sm:text-base text-gray-600 mb-6">
+      <p className="text-sm sm:text-base text-gray-700 leading-relaxed mb-6 max-w-2xl">
         First-time buyer? We can produce a small trial batch or send sample print sheets before full production.
       </p>
 
-      <div className={`grid ${isCompact ? 'grid-cols-2 lg:grid-cols-4' : 'sm:grid-cols-2 lg:grid-cols-4'} gap-4`}>
+      <div
+        className={`grid ${
+          isCompact ? 'grid-cols-2 lg:grid-cols-4' : 'sm:grid-cols-2 lg:grid-cols-4'
+        } gap-4 sm:gap-5`}
+      >
         {steps.map((step, idx) => (
           <div
             key={step.title}

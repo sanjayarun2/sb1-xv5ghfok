@@ -32,14 +32,14 @@ export default function FactoryStandards({ showExportDoc = false }: FactoryStand
 
   return (
     <section className="py-8">
-      <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">
+      <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 tracking-tight mb-3">
         Factory quality standards
       </h2>
-      <p className="text-sm sm:text-base text-gray-600 mb-6">
+      <p className="text-sm sm:text-base text-gray-700 leading-relaxed mb-6 max-w-2xl">
         We manufacture only saree and textile packaging — nothing else. This focus means every process in our factory is
         tuned specifically for saree box quality.
       </p>
-      <div className="grid sm:grid-cols-2 gap-4">
+      <div className="grid sm:grid-cols-2 gap-4 sm:gap-5">
         {items.map((item) => (
           <div key={item.title} className="flex gap-3 bg-gray-50 border border-gray-100 rounded-xl p-4 sm:p-5">
             <item.icon className="h-5 w-5 text-blue-500 flex-shrink-0 mt-0.5" />

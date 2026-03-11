@@ -26,7 +26,7 @@ export default function FAQBlock({ title = 'Frequently Asked Questions', items }
   return (
     <section className="py-8">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+      <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 tracking-tight mb-6 flex items-center gap-2">
         <HelpCircle className="h-6 w-6 text-blue-500" />
         {title}
       </h2>
