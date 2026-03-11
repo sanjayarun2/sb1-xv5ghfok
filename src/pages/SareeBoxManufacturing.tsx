@@ -111,7 +111,7 @@ export default function SareeBoxManufacturing() {
 
         {/* Hero / Intro */}
         <header className="bg-gradient-to-b from-gray-50 to-white">
-          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-12 sm:pt-14 sm:pb-16">
+          <div className="max-w-3xl lg:max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-12 sm:pt-14 sm:pb-16">
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 leading-tight tracking-tight">
               {pillarMeta.title}
             </h1>
@@ -127,7 +127,7 @@ export default function SareeBoxManufacturing() {
           </div>
         </header>
 
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+        <div className="max-w-3xl lg:max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
 
           {/* Table of Contents */}
           <nav

@@ -24,6 +24,7 @@ import SareeBoxGallery from './pages/SareeBoxGallery';
 import CaseStudyIndex from './pages/CaseStudyIndex';
 import CaseStudy from './pages/CaseStudy';
 import TrustStrip from './components/TrustStrip';
+import ScrollToTop from './components/ScrollToTop';
 import WhatsAppButton from './components/whatsappbutton'; 
 
 const AdminLogin = lazy(() => import('./pages/AdminLogin'));
@@ -38,6 +39,7 @@ export default function App() {
     <AuthProvider>
       <HelmetProvider>
         <Router>
+          <ScrollToTop />
           <div className="min-h-screen bg-white">
             <Routes>
               <Route

@@ -180,7 +180,14 @@ export default function Footer() {
             <div className="flex flex-wrap items-center gap-x-8 gap-y-4">
               {paymentMethods.map((method) => (
                 <div key={method.name} className="h-8 w-16 flex items-center justify-center">
-                  <img src={method.logo} alt={method.name} className="max-h-full max-w-full object-contain" />
+                  <img
+                    src={method.logo}
+                    alt={method.name}
+                    className="max-h-full max-w-full object-contain"
+                    loading="lazy"
+                    width={64}
+                    height={32}
+                  />
                 </div>
               ))}
             </div>
