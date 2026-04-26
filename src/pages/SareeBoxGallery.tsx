@@ -102,7 +102,7 @@ export default function SareeBoxGallery() {
             </p>
             <div className="flex flex-wrap gap-3 text-sm">
               <a
-                href="https://wa.me/918904752338?text=Hi%2C%20I%20saw%20your%20gallery%20and%20want%20a%20custom%20saree%20box%20design."
+                href="https://wa.me/919363438312?text=Hi%2C%20I%20saw%20your%20gallery%20and%20want%20a%20custom%20saree%20box%20design."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center px-5 py-2.5 rounded-xl bg-green-500 hover:bg-green-600 text-white font-bold shadow-md transition-colors"

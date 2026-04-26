@@ -78,7 +78,7 @@ export default function AboutUs() {
                 </div>
                 <div className="flex items-center space-x-3">
                   <Phone className="h-5 w-5 text-blue-600" />
-                  <p className="text-gray-600">+91 8526939639</p>
+                  <p className="text-gray-600">+91 8904752338</p>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Mail className="h-5 w-5 text-blue-600" />
@@ -93,7 +93,7 @@ export default function AboutUs() {
                 </div>
                 <div className="flex items-center space-x-3">
                   <Phone className="h-5 w-5 text-blue-600" />
-                  <p className="text-gray-600">+91 8904752338</p>
+                  <p className="text-gray-600">+91 9363438312</p>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Mail className="h-5 w-5 text-blue-600" />

@@ -80,7 +80,7 @@ export default function CaseStudyIndex() {
             </p>
             <div className="flex flex-wrap gap-3 text-sm">
               <a
-                href="https://wa.me/918904752338?text=Hi%2C%20I%20saw%20your%20case%20studies%20and%20would%20like%20to%20discuss%20my%20saree%20box%20requirement."
+                href="https://wa.me/919363438312?text=Hi%2C%20I%20saw%20your%20case%20studies%20and%20would%20like%20to%20discuss%20my%20saree%20box%20requirement."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center px-5 py-2.5 rounded-xl bg-green-500 hover:bg-green-600 text-white font-bold shadow-md transition-colors"
