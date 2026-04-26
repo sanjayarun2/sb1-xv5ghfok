@@ -124,7 +124,7 @@ export default function Footer() {
               <li><Link to="/product/customized-saree-box" className="hover:text-blue-600 transition-colors">Customized Saree Box</Link></li>
               <li><Link to="/product/luxury-saree-paper-box" className="hover:text-blue-600 transition-colors">Luxury Saree Paper Box</Link></li>
               <li><Link to="/product/custom-designed-saree-box" className="hover:text-blue-600 transition-colors">Custom designed saree box</Link></li>
-              <li><Link to="/product/saree-storage-cartons" className="hover:text-blue-600 transition-colors">Saree Storage Cartons</Link></li>
+              <li><Link to="/product/saree-storage-bags-cartons" className="hover:text-blue-600 transition-colors">Saree Storage Cartons</Link></li>
               <li className="pt-2 border-t border-gray-100 mt-2"><Link to="/gallery" className="hover:text-blue-600 transition-colors font-medium">Saree Box Gallery</Link></li>
               <li><Link to="/case-study" className="hover:text-blue-600 transition-colors font-medium">Case Studies</Link></li>
               <li><Link to="/why-saree-box-only" className="hover:text-blue-600 transition-colors font-medium">Why Only Saree Boxes?</Link></li>
