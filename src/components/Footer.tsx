@@ -15,13 +15,13 @@ const addresses = [
   {
     title: "Main Branch",
     address: "183 Edanganasalai, Murugan Nagar - 2nd street, Elampillai - 637502",
-    phone: "+91 9363438312",
+    phone: "+91 8098640303",
     email: "branch@premiumpacking.in"
   },
   {
     title: "Production Plant",
     address: "158 Tamil Nagar, Sivakasi - 626123",
-    phone: "+91 8904752338",
+    phone: "+91 8098640303",
     email: "Factory@premiumpacking.in"
   }
 ];
@@ -67,7 +67,7 @@ export default function Footer() {
         "@id": "https://premiumpacking.in/#localbusiness",
         "name": "Premium Box Manufacturing",
         "image": "https://premiumpacking.in/logo.png",
-        "telephone": "+91 9363438312",
+        "telephone": "+91 8098640303",
         "url": "https://premiumpacking.in",
         "address": [
           {

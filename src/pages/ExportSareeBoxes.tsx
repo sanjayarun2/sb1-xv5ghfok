@@ -8,7 +8,7 @@ import { exportPage } from '../data/exportPage';
 
 const domain = 'https://premiumpacking.in';
 const whatsappURL =
-  'https://wa.me/919363438312?text=Hi%2C%20I%20am%20interested%20in%20export%20saree%20boxes%20for%20overseas%20orders.';
+  'https://wa.me/918098640303?text=Hi%2C%20I%20am%20interested%20in%20export%20saree%20boxes%20for%20overseas%20orders.';
 
 export default function ExportSareeBoxes() {
   const articleSchema = {

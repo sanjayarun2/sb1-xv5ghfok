@@ -10,7 +10,7 @@ import { categoryProducts } from '../data/products';
 
 const domain = 'https://premiumpacking.in';
 const whatsappURL =
-  'https://wa.me/919363438312?text=Hi%2C%20I%20am%20interested%20in%20saree%20boxes%20for%20my%20city.';
+  'https://wa.me/918098640303?text=Hi%2C%20I%20am%20interested%20in%20saree%20boxes%20for%20my%20city.';
 
 export default function CityLanding() {
   const { citySlug } = useParams<{ citySlug: string }>();

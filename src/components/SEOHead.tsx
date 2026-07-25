@@ -29,7 +29,7 @@ export default function SEOHead({
     "description": description,
     "image": "https://premiumpacking.in/printed%20box.webp", 
     "url": "https://premiumpacking.in",
-    "telephone": "+91 9363438312",
+    "telephone": "+91 8098640303",
     "address": [
       {
         "@type": "PostalAddress",

@@ -2,7 +2,7 @@ import { PackageCheck, Zap, Globe, MessageCircle } from 'lucide-react';
 
 export default function Hero() {
   // Use the standard wa.me format for global compatibility
-  const whatsappURL = "https://wa.me/919363438312?text=Hi%2C%20I%20am%20interested%20in%20custom%20saree%20boxes.";
+  const whatsappURL = "https://wa.me/918098640303?text=Hi%2C%20I%20am%20interested%20in%20custom%20saree%20boxes.";
 
   return (
     <div className="relative bg-white overflow-hidden pt-4 lg:pt-10">
